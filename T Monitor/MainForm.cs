@@ -422,8 +422,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -1142,6 +1142,8 @@ namespace Monitor
             // checkBox_TCPClientRxHex
             // 
             this.checkBox_TCPClientRxHex.AutoSize = true;
+            this.checkBox_TCPClientRxHex.Checked = true;
+            this.checkBox_TCPClientRxHex.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_TCPClientRxHex.Location = new System.Drawing.Point(1224, 82);
             this.checkBox_TCPClientRxHex.Name = "checkBox_TCPClientRxHex";
             this.checkBox_TCPClientRxHex.Size = new System.Drawing.Size(122, 22);
@@ -1476,17 +1478,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea8.AxisX.Title = "Freq";
-            chartArea8.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.AxisY.Title = "Power [dBm]";
-            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea8);
-            legend8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend8.IsTextAutoFit = false;
-            legend8.Name = "Legend1";
-            legend8.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend8);
+            chartArea9.AxisX.Title = "Freq";
+            chartArea9.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea9.AxisY.Title = "Power [dBm]";
+            chartArea9.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea9.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea9);
+            legend9.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend9.IsTextAutoFit = false;
+            legend9.Name = "Legend1";
+            legend9.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend9);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -5256,6 +5258,11 @@ namespace Monitor
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (ClientSocket.Connected)
+            {
+                ClientSocket.Close();
+            }
+
             CloseClentConnection();
             m_Exit = true;
             System.GC.Collect();
@@ -7553,11 +7560,19 @@ namespace Monitor
                         TcpClient PClientSocket = ClientSocket;
                         if (TCPClientBuffer.Length > 0)
                         {
-
-                            string str = System.Text.Encoding.Default.GetString(TCPClientBuffer);
-                            richTextBox_ClientRxPrintText("[" + DateTime.Now.TimeOfDay.ToString().Substring(0, 11) + "] " + str + "\n \n");
-                            TCPClientBuffer = new byte[0];
-                            PClientSocket = ClientSocket;
+                            if (checkBox_TCPClientRxHex.Checked == true)
+                            {
+                                richTextBox_ClientRxPrintText("[" + DateTime.Now.TimeOfDay.ToString().Substring(0, 11) + "] " + ConvertByteArraytToString (TCPClientBuffer) + "\n");
+                                TCPClientBuffer = new byte[0];
+                                PClientSocket = ClientSocket;
+                            }
+                            else
+                            {
+                                string str = System.Text.Encoding.Default.GetString(TCPClientBuffer);
+                                richTextBox_ClientRxPrintText("[" + DateTime.Now.TimeOfDay.ToString().Substring(0, 11) + "] " + str + "\n");
+                                TCPClientBuffer = new byte[0];
+                                PClientSocket = ClientSocket;
+                            }
                         }
                     }
                     catch (Exception ex)
