@@ -422,8 +422,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -939,8 +939,8 @@ namespace Monitor
             // tabControl_Main
             // 
             this.tabControl_Main.Controls.Add(this.tabPage_ServerTCP);
-            this.tabControl_Main.Controls.Add(this.tabPage_ClientTCP);
             this.tabControl_Main.Controls.Add(this.tabPage_charts);
+            this.tabControl_Main.Controls.Add(this.tabPage_ClientTCP);
             this.tabControl_Main.Controls.Add(this.tabPage_SerialPort);
             this.tabControl_Main.Controls.Add(this.tabPage_Commands);
             this.tabControl_Main.Location = new System.Drawing.Point(4, 5);
@@ -1478,17 +1478,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea9.AxisX.Title = "Freq";
-            chartArea9.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea9.AxisY.Title = "Power [dBm]";
-            chartArea9.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea9.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea9);
-            legend9.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend9.IsTextAutoFit = false;
-            legend9.Name = "Legend1";
-            legend9.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend9);
+            chartArea10.AxisX.Title = "Freq";
+            chartArea10.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea10.AxisY.Title = "Power [dBm]";
+            chartArea10.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea10.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea10);
+            legend10.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend10.IsTextAutoFit = false;
+            legend10.Name = "Legend1";
+            legend10.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend10);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -5258,9 +5258,13 @@ namespace Monitor
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (ClientSocket.Connected)
+
+            if (ClientSocket != null)
             {
-                ClientSocket.Close();
+                if (ClientSocket.Connected == true)
+                {
+                    ClientSocket.Close();
+                }
             }
 
             CloseClentConnection();
@@ -6710,11 +6714,11 @@ namespace Monitor
         }
         private void GetSystemStatus(KratosProtocolFrame i_Parsedframe)
         {
-            if (int.TryParse(i_Parsedframe.LengthOfEntireMessage, out int DataLength) == true)
-            {
+            //if (int.TryParse(i_Parsedframe.LengthOfEntireMessage, out int DataLength) == true)
+            //{
 
 
-            }
+            //}
 
             //  SendMessageToSystemLogger(ret);
         }
@@ -6724,40 +6728,40 @@ namespace Monitor
             return (b & (1 << bitNumber)).ToString();
         }
 
-        private void GetDiscreteStatusBusmode(KratosProtocolFrame i_Parsedframe)
-        {
-            if (int.TryParse(i_Parsedframe.LengthOfEntireMessage, out int DataLength) == true)
-            {
-                // byte Data = byte.Parse(GetBytesFromData(i_Parsedframe.Data, 0, 2), System.Globalization.NumberStyles.HexNumber);
+        //private void GetDiscreteStatusBusmode(KratosProtocolFrame i_Parsedframe)
+        //{
+        //    if (int.TryParse(i_Parsedframe.LengthOfEntireMessage, out int DataLength) == true)
+        //    {
+        //        // byte Data = byte.Parse(GetBytesFromData(i_Parsedframe.Data, 0, 2), System.Globalization.NumberStyles.HexNumber);
 
 
-            }
+        //    }
 
-            //   SendMessageToSystemLogger(ret);
-        }
+        //    //   SendMessageToSystemLogger(ret);
+        //}
 
-        private void GetSystemTableIndexes(KratosProtocolFrame i_Parsedframe)
-        {
-            if (int.TryParse(i_Parsedframe.LengthOfEntireMessage, out int DataLength) == true)
-            {
-                // byte Data = byte.Parse(GetBytesFromData(i_Parsedframe.Data, 0, 2), System.Globalization.NumberStyles.HexNumber);
+        //private void GetSystemTableIndexes(KratosProtocolFrame i_Parsedframe)
+        //{
+        //    if (int.TryParse(i_Parsedframe.LengthOfEntireMessage, out int DataLength) == true)
+        //    {
+        //        // byte Data = byte.Parse(GetBytesFromData(i_Parsedframe.Data, 0, 2), System.Globalization.NumberStyles.HexNumber);
 
 
-            }
-        }
+        //    }
+        //}
 
-        private void ReadFromFlash(KratosProtocolFrame i_Parsedframe)
-        {
-            string ret = "";
-            int.TryParse(i_Parsedframe.LengthOfEntireMessage, out int DataLength);
+        //private void ReadFromFlash(KratosProtocolFrame i_Parsedframe)
+        //{
+        //    string ret = "";
+        //    int.TryParse(i_Parsedframe.LengthOfEntireMessage, out int DataLength);
 
-            for (int i = 0; i < DataLength - 2; i = i + 2)
-            {
-                ret += "<<" + i_Parsedframe.Data.Substring(i, i + 2) + ">>";
-            }
+        //    for (int i = 0; i < DataLength - 2; i = i + 2)
+        //    {
+        //        ret += "<<" + i_Parsedframe.Data.Substring(i, i + 2) + ">>";
+        //    }
 
-            //    SendMessageToSystemLogger(ret);
-        }
+        //    //    SendMessageToSystemLogger(ret);
+        //}
 
         private void ACK_Received(KratosProtocolFrame i_Parsedframe)
         {
@@ -7057,7 +7061,7 @@ namespace Monitor
                         break;
 
                     case "25":
-                        GetDiscreteStatusBusmode(i_Parsedframe);
+                       // GetDiscreteStatusBusmode(i_Parsedframe);
 
                         break;
 
@@ -7087,7 +7091,7 @@ namespace Monitor
                         break;
 
                     case "37":
-                        GetSystemTableIndexes(i_Parsedframe);
+                     //   GetSystemTableIndexes(i_Parsedframe);
 
                         break;
 
@@ -7102,7 +7106,7 @@ namespace Monitor
                         break;
 
                     case "70":
-                        ReadFromFlash(i_Parsedframe);
+                  //      ReadFromFlash(i_Parsedframe);
 
                         break;
 
@@ -9222,6 +9226,116 @@ namespace Monitor
             }
         }
 
+        public class KratosProtocolFrame
+        {
+            public string Preamble; // 2 bytes
+            public string Opcode; // 2 bytes
+            public string Data; // X bytes
+            public string DataLength; // 4 bytes
+            public string CheckSum;// 2 bytes;
+
+            public override string ToString()
+            {
+                return String.Format("Preamble: [{0}] Opcode: [{1}] Data : [{2}] Data length: [{3}] CheckSum: [{4}]",
+                    Preamble, Opcode, Data, DataLength, CheckSum);
+            }
+        }
+
+        public KratosProtocolFrame DecodeKratusProtocol(byte[] i_IncomingBytes)
+        {
+            KratosProtocolFrame Ret = new KratosProtocolFrame();
+
+            try
+            {
+                byte[] DataLengthBytes = i_IncomingBytes.Skip(4).Take(4).ToArray();
+
+                UInt32 FrameDataLength = BitConverter.ToUInt32(DataLengthBytes, 0);
+                int CheckSumIndex = (int)FrameDataLength + 8;
+
+
+                UInt16 CheckSumCalc = 0;
+
+                for (int i = 0; i < CheckSumIndex; i++)
+                {
+                    CheckSumCalc += i_IncomingBytes[i];
+                }
+
+                byte[] CheckSumBytes = i_IncomingBytes.Skip(CheckSumIndex).Take(2).ToArray();
+                UInt16 CheckSumSent = BitConverter.ToUInt16(CheckSumBytes, 0);
+
+                if (CheckSumSent == CheckSumCalc)
+                {
+
+                    Ret.Preamble = ByteArrayToString(i_IncomingBytes.Skip(0).Take(2).ToArray());
+
+                    Ret.Opcode = ByteArrayToString(i_IncomingBytes.Skip(2).Take(2).ToArray());
+
+                    Ret.Data = ByteArrayToString(i_IncomingBytes.Skip(8).Take((int)FrameDataLength).ToArray());
+
+                    Ret.DataLength = FrameDataLength.ToString();
+
+                    Ret.CheckSum = CheckSumSent.ToString("X4");
+                    return Ret;
+
+
+                }
+                else
+                {
+                    //throw new Exception("Check sum failed!");
+                    WriteToSystemStatus("Tx Client check sum failed!!", 5, Color.Orange);
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                WriteToSystemStatus(ex.Message, 5, Color.Orange);
+                //   throw new Exception(ex.Message);
+                return null;
+
+            }
+
+
+        }
+
+        public byte[] EncodeKratusProtocol(string i_Preamble, string i_Opcode, string i_Data)
+        {
+            try
+            {
+                List<byte> ListBytes = new List<byte>();
+
+                ListBytes.AddRange(StringToByteArray(i_Preamble));
+
+                ListBytes.AddRange(StringToByteArray(i_Opcode));
+
+                byte[] DataBytes = StringToByteArray(i_Data);
+                UInt32 Datalength = (UInt32)DataBytes.Length;
+                byte[] intBytes = BitConverter.GetBytes(Datalength);
+                ListBytes.AddRange(intBytes);
+
+
+                ListBytes.AddRange(DataBytes);
+
+                UInt16 CheckSum = 0;
+
+                for (int i = 0; i < ListBytes.Count; i++)
+                {
+                    CheckSum += ListBytes[i];
+                }
+                intBytes = BitConverter.GetBytes(CheckSum);
+                ListBytes.AddRange(intBytes);
+
+                byte[] Ret = ListBytes.ToArray();
+
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
         private void Button3_Click_4(object sender, EventArgs e)
         {
             try
@@ -9237,6 +9351,8 @@ namespace Monitor
                 {
                     String temp = richTextBox_ClientTx.Text.Replace("0x", "");
                     byte[] buffer = StringToByteArray(temp);
+
+
 
                     if (buffer != null)
                     {
@@ -14334,8 +14450,8 @@ Use the arrows Up, Down and Tab for autocomplition.
             try
             {
 
-                //tabControl_Main.TabPages.RemoveAt(0);
-                //tabControl_Main.TabPages.RemoveAt(0);
+                tabControl_Main.TabPages.RemoveAt(0);
+                tabControl_Main.TabPages.RemoveAt(0);
                 //tabControl_Main.TabPages.RemoveAt(0);
 
 
