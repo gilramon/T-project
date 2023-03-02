@@ -9153,7 +9153,7 @@ namespace Monitor
                         {
 
 
-                            SystemLogger.LogMessage(Color.Black, Color.Red, "Gil: " + ex.ToString(), New_Line = true, Show_Time = true);
+                            SystemLogger.LogMessage(Color.Black, Color.Orange,  ex.ToString(), New_Line = true, Show_Time = true);
 
 
                             return;
@@ -14251,6 +14251,65 @@ ReadReg32 AAAAAAAA ---> Read from Register 0xAAAAAAAA
 "ReadReg32 00000000");
 
             List_AllCommands.Add(ReadReg32);
+
+
+            CommandClass RecordIQData = new CommandClass("RecordIQData",
+@"
+Description: 
+Start recording ‘I’ & ’Q’ data
+
+Num of arguments:
+2
+
+Syntax:
+RecordIQData [Channel to record] [Num of samples per channel. Note: each sample is 32bit.]
+
+Example:
+
+RecordIQData 1 1024 ----> record from channel 2 1024 samples
+",
+"RecordIQData 1 1024");
+
+            List_AllCommands.Add(RecordIQData);
+
+            CommandClass GetRecordingBufferSize = new CommandClass("GetRecordingBufferSize",
+@"
+Description: 
+Get amounted size for recording buffer 
+
+Num of arguments:
+0
+
+Syntax:
+GetRecordingBufferSize
+
+Example:
+
+GetRecordingBufferSize
+",
+"GetRecordingBufferSize");
+
+            List_AllCommands.Add(GetRecordingBufferSize);
+
+            CommandClass InitPlayIQData = new CommandClass("InitPlayIQData",
+@"
+Description: 
+Configure the recording system without starting
+
+Num of arguments:
+0
+
+Syntax:
+
+InitPlayIQData [1-200Mbytes – sequence of loaded data]
+
+Example:
+
+InitPlayIQData 2000000
+",
+"InitPlayIQData 2000000");
+
+            List_AllCommands.Add(InitPlayIQData);
 
 
 
