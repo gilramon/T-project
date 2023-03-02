@@ -13586,7 +13586,6 @@ This Process can take 1 minute.";
 
                         default:
                             ret = String.Format("[{0}] command not implemented", i_Command);
-                            SystemLogger.LogMessage(Color.Orange, Color.LightGray, ret, true, true);
 
                             break;
 
