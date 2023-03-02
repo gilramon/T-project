@@ -14220,10 +14220,6 @@ WriteReg32 00000000 1234ABCD
 WriteReg32 00000000 12345678 FFFF0000 1000
     Read Register 0x00000000 modify 0xXXXX5678 and write back to 0x00000000 with delay of 1000 ms between read and write
 
-in order to see full status add _s to the Address For example:
-
-WriteReg32 00000000_s 1234ABCD
-
 ",
 "WriteReg32 00000000 1234ABCD");
 
@@ -14251,8 +14247,6 @@ ReadReg address [4 hex bytes]
 Example:
 
 ReadReg32 AAAAAAAA ---> Read from Register 0xAAAAAAAA
-In order to see full status add _s in the end of the address for example:
-ReadReg32 AAAAAAAA_s
 ",
 "ReadReg32 00000000");
 
