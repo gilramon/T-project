@@ -330,6 +330,11 @@ namespace Monitor
                     //bool PrintMesseges = true;
                     IsPrinting = true;
                     // Gil: to avoid : Collection was modified; enumeration operation may not execute.
+                    if (m_txtBox == null)
+                    {
+                        return;
+                    }
+
 
                     m_txtBox.BeginInvoke(new EventHandler(delegate
                     {

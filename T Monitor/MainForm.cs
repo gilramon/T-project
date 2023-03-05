@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Serialization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Monitor
 {
@@ -368,7 +369,8 @@ namespace Monitor
         private CheckBox checkBox_TCPClientTxHex;
         private GroupBox groupBox31;
         private GroupBox groupBox33;
-        private static readonly string PREAMBLE = "54";
+        private CheckBox checkBox_RecordToFileTCPClient;
+        private static readonly string PREAMBLE = "0054";
 
 
         /// <summary>
@@ -465,24 +467,6 @@ namespace Monitor
             this.textBox_graph_XY = new System.Windows.Forms.TextBox();
             this.button_ScreenShot = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage_ClientTCP = new System.Windows.Forms.TabPage();
-            this.groupBox33 = new System.Windows.Forms.GroupBox();
-            this.richTextBox_ClientTx = new System.Windows.Forms.RichTextBox();
-            this.button_TCPClientTxSend = new System.Windows.Forms.Button();
-            this.checkBox_TCPClientTxHex = new System.Windows.Forms.CheckBox();
-            this.button_TCPClientClear = new System.Windows.Forms.Button();
-            this.groupBox31 = new System.Windows.Forms.GroupBox();
-            this.richTextBox_ClientRx = new System.Windows.Forms.RichTextBox();
-            this.checkBox_TCPClientRxHex = new System.Windows.Forms.CheckBox();
-            this.button_ClearRx = new System.Windows.Forms.Button();
-            this.checkBox_ParseRxTCPBuffer = new System.Windows.Forms.CheckBox();
-            this.button_Ping = new System.Windows.Forms.Button();
-            this.button_ClientClose = new System.Windows.Forms.Button();
-            this.button_ClientConnect = new System.Windows.Forms.Button();
-            this.textBox_ClientPort = new System.Windows.Forms.TextBox();
-            this.textBox_ClientIP = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.tabPage_SerialPort = new System.Windows.Forms.TabPage();
             this.button_OpenPort = new System.Windows.Forms.Button();
             this.groupBox_SendSerialOrMonitorCommands = new System.Windows.Forms.GroupBox();
@@ -524,6 +508,24 @@ namespace Monitor
             this.checkBox_SerialPortPause = new System.Windows.Forms.CheckBox();
             this.button_ClearSerialPort = new System.Windows.Forms.Button();
             this.SerialPortLogger_TextBox = new System.Windows.Forms.RichTextBox();
+            this.tabPage_ClientTCP = new System.Windows.Forms.TabPage();
+            this.groupBox33 = new System.Windows.Forms.GroupBox();
+            this.richTextBox_ClientTx = new System.Windows.Forms.RichTextBox();
+            this.button_TCPClientTxSend = new System.Windows.Forms.Button();
+            this.checkBox_TCPClientTxHex = new System.Windows.Forms.CheckBox();
+            this.button_TCPClientClear = new System.Windows.Forms.Button();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.richTextBox_ClientRx = new System.Windows.Forms.RichTextBox();
+            this.checkBox_TCPClientRxHex = new System.Windows.Forms.CheckBox();
+            this.button_ClearRx = new System.Windows.Forms.Button();
+            this.checkBox_ParseRxTCPBuffer = new System.Windows.Forms.CheckBox();
+            this.button_Ping = new System.Windows.Forms.Button();
+            this.button_ClientClose = new System.Windows.Forms.Button();
+            this.button_ClientConnect = new System.Windows.Forms.Button();
+            this.textBox_ClientPort = new System.Windows.Forms.TextBox();
+            this.textBox_ClientIP = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabPage_Commands = new System.Windows.Forms.TabPage();
             this.groupBox40 = new System.Windows.Forms.GroupBox();
             this.tabControl_System = new System.Windows.Forms.TabControl();
@@ -745,6 +747,7 @@ namespace Monitor
             this.saveFileDialog_Local = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog_Local = new System.Windows.Forms.OpenFileDialog();
             this.checkBox_Openall = new System.Windows.Forms.CheckBox();
+            this.checkBox_RecordToFileTCPClient = new System.Windows.Forms.CheckBox();
             this.groupBox_ServerSettings.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl_Main.SuspendLayout();
@@ -752,15 +755,15 @@ namespace Monitor
             this.groupBox3.SuspendLayout();
             this.tabPage_charts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.tabPage_ClientTCP.SuspendLayout();
-            this.groupBox33.SuspendLayout();
-            this.groupBox31.SuspendLayout();
             this.tabPage_SerialPort.SuspendLayout();
             this.groupBox_SendSerialOrMonitorCommands.SuspendLayout();
             this.gbPortSettings.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox_Timer.SuspendLayout();
             this.groupBox_Stopwatch.SuspendLayout();
+            this.tabPage_ClientTCP.SuspendLayout();
+            this.groupBox33.SuspendLayout();
+            this.groupBox31.SuspendLayout();
             this.tabPage_Commands.SuspendLayout();
             this.groupBox40.SuspendLayout();
             this.tabControl_System.SuspendLayout();
@@ -1318,213 +1321,6 @@ namespace Monitor
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Chart1_MouseClick);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Chart1_MouseMove);
             // 
-            // tabPage_ClientTCP
-            // 
-            this.tabPage_ClientTCP.Controls.Add(this.groupBox33);
-            this.tabPage_ClientTCP.Controls.Add(this.groupBox31);
-            this.tabPage_ClientTCP.Controls.Add(this.button_Ping);
-            this.tabPage_ClientTCP.Controls.Add(this.button_ClientClose);
-            this.tabPage_ClientTCP.Controls.Add(this.button_ClientConnect);
-            this.tabPage_ClientTCP.Controls.Add(this.textBox_ClientPort);
-            this.tabPage_ClientTCP.Controls.Add(this.textBox_ClientIP);
-            this.tabPage_ClientTCP.Controls.Add(this.label8);
-            this.tabPage_ClientTCP.Controls.Add(this.label7);
-            this.tabPage_ClientTCP.Location = new System.Drawing.Point(4, 27);
-            this.tabPage_ClientTCP.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage_ClientTCP.Name = "tabPage_ClientTCP";
-            this.tabPage_ClientTCP.Size = new System.Drawing.Size(1414, 648);
-            this.tabPage_ClientTCP.TabIndex = 9;
-            this.tabPage_ClientTCP.Text = "Client TCP";
-            this.tabPage_ClientTCP.UseVisualStyleBackColor = true;
-            // 
-            // groupBox33
-            // 
-            this.groupBox33.Controls.Add(this.richTextBox_ClientTx);
-            this.groupBox33.Controls.Add(this.button_TCPClientTxSend);
-            this.groupBox33.Controls.Add(this.checkBox_TCPClientTxHex);
-            this.groupBox33.Controls.Add(this.button_TCPClientClear);
-            this.groupBox33.Location = new System.Drawing.Point(24, 102);
-            this.groupBox33.Name = "groupBox33";
-            this.groupBox33.Size = new System.Drawing.Size(1378, 92);
-            this.groupBox33.TabIndex = 19;
-            this.groupBox33.TabStop = false;
-            this.groupBox33.Text = "Tx - Data";
-            // 
-            // richTextBox_ClientTx
-            // 
-            this.richTextBox_ClientTx.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox_ClientTx.Location = new System.Drawing.Point(7, 14);
-            this.richTextBox_ClientTx.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox_ClientTx.Name = "richTextBox_ClientTx";
-            this.richTextBox_ClientTx.Size = new System.Drawing.Size(1235, 42);
-            this.richTextBox_ClientTx.TabIndex = 4;
-            this.richTextBox_ClientTx.Text = "0054 11 22 33 44";
-            this.richTextBox_ClientTx.TextChanged += new System.EventHandler(this.richTextBox_ClientTx_TextChanged);
-            // 
-            // button_TCPClientTxSend
-            // 
-            this.button_TCPClientTxSend.Location = new System.Drawing.Point(1246, 12);
-            this.button_TCPClientTxSend.Margin = new System.Windows.Forms.Padding(2);
-            this.button_TCPClientTxSend.Name = "button_TCPClientTxSend";
-            this.button_TCPClientTxSend.Size = new System.Drawing.Size(68, 22);
-            this.button_TCPClientTxSend.TabIndex = 5;
-            this.button_TCPClientTxSend.Text = "Send";
-            this.button_TCPClientTxSend.UseVisualStyleBackColor = true;
-            this.button_TCPClientTxSend.Click += new System.EventHandler(this.button_TCPClientTxSend_Click);
-            // 
-            // checkBox_TCPClientTxHex
-            // 
-            this.checkBox_TCPClientTxHex.AutoSize = true;
-            this.checkBox_TCPClientTxHex.Checked = true;
-            this.checkBox_TCPClientTxHex.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_TCPClientTxHex.Location = new System.Drawing.Point(1247, 70);
-            this.checkBox_TCPClientTxHex.Name = "checkBox_TCPClientTxHex";
-            this.checkBox_TCPClientTxHex.Size = new System.Drawing.Size(127, 22);
-            this.checkBox_TCPClientTxHex.TabIndex = 16;
-            this.checkBox_TCPClientTxHex.Text = "Sent Hex format";
-            this.checkBox_TCPClientTxHex.UseVisualStyleBackColor = true;
-            // 
-            // button_TCPClientClear
-            // 
-            this.button_TCPClientClear.Location = new System.Drawing.Point(1246, 41);
-            this.button_TCPClientClear.Margin = new System.Windows.Forms.Padding(2);
-            this.button_TCPClientClear.Name = "button_TCPClientClear";
-            this.button_TCPClientClear.Size = new System.Drawing.Size(68, 23);
-            this.button_TCPClientClear.TabIndex = 8;
-            this.button_TCPClientClear.Text = "Clear Tx";
-            this.button_TCPClientClear.UseVisualStyleBackColor = true;
-            this.button_TCPClientClear.Click += new System.EventHandler(this.Button43_Click_1);
-            // 
-            // groupBox31
-            // 
-            this.groupBox31.Controls.Add(this.richTextBox_ClientRx);
-            this.groupBox31.Controls.Add(this.checkBox_TCPClientRxHex);
-            this.groupBox31.Controls.Add(this.button_ClearRx);
-            this.groupBox31.Controls.Add(this.checkBox_ParseRxTCPBuffer);
-            this.groupBox31.Location = new System.Drawing.Point(24, 200);
-            this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(1378, 432);
-            this.groupBox31.TabIndex = 18;
-            this.groupBox31.TabStop = false;
-            this.groupBox31.Text = "Rx - Data";
-            // 
-            // richTextBox_ClientRx
-            // 
-            this.richTextBox_ClientRx.Location = new System.Drawing.Point(7, 27);
-            this.richTextBox_ClientRx.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox_ClientRx.Name = "richTextBox_ClientRx";
-            this.richTextBox_ClientRx.ReadOnly = true;
-            this.richTextBox_ClientRx.Size = new System.Drawing.Size(1213, 400);
-            this.richTextBox_ClientRx.TabIndex = 9;
-            this.richTextBox_ClientRx.Text = "";
-            // 
-            // checkBox_TCPClientRxHex
-            // 
-            this.checkBox_TCPClientRxHex.AutoSize = true;
-            this.checkBox_TCPClientRxHex.Checked = true;
-            this.checkBox_TCPClientRxHex.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_TCPClientRxHex.Location = new System.Drawing.Point(1224, 82);
-            this.checkBox_TCPClientRxHex.Name = "checkBox_TCPClientRxHex";
-            this.checkBox_TCPClientRxHex.Size = new System.Drawing.Size(122, 22);
-            this.checkBox_TCPClientRxHex.TabIndex = 17;
-            this.checkBox_TCPClientRxHex.Text = "Show Send Hex";
-            this.checkBox_TCPClientRxHex.UseVisualStyleBackColor = true;
-            // 
-            // button_ClearRx
-            // 
-            this.button_ClearRx.Location = new System.Drawing.Point(1224, 29);
-            this.button_ClearRx.Margin = new System.Windows.Forms.Padding(2);
-            this.button_ClearRx.Name = "button_ClearRx";
-            this.button_ClearRx.Size = new System.Drawing.Size(69, 22);
-            this.button_ClearRx.TabIndex = 11;
-            this.button_ClearRx.Text = "Clear Rx";
-            this.button_ClearRx.UseVisualStyleBackColor = true;
-            this.button_ClearRx.Click += new System.EventHandler(this.Button_ClearRx_Click);
-            // 
-            // checkBox_ParseRxTCPBuffer
-            // 
-            this.checkBox_ParseRxTCPBuffer.AutoSize = true;
-            this.checkBox_ParseRxTCPBuffer.Location = new System.Drawing.Point(1224, 56);
-            this.checkBox_ParseRxTCPBuffer.Name = "checkBox_ParseRxTCPBuffer";
-            this.checkBox_ParseRxTCPBuffer.Size = new System.Drawing.Size(146, 22);
-            this.checkBox_ParseRxTCPBuffer.TabIndex = 15;
-            this.checkBox_ParseRxTCPBuffer.Text = "Parse Rx TCP Buffer";
-            this.checkBox_ParseRxTCPBuffer.UseVisualStyleBackColor = true;
-            // 
-            // button_Ping
-            // 
-            this.button_Ping.Location = new System.Drawing.Point(178, 75);
-            this.button_Ping.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Ping.Name = "button_Ping";
-            this.button_Ping.Size = new System.Drawing.Size(91, 22);
-            this.button_Ping.TabIndex = 14;
-            this.button_Ping.Text = "Ping";
-            this.button_Ping.UseVisualStyleBackColor = true;
-            this.button_Ping.Click += new System.EventHandler(this.button72_Click);
-            // 
-            // button_ClientClose
-            // 
-            this.button_ClientClose.Location = new System.Drawing.Point(105, 77);
-            this.button_ClientClose.Margin = new System.Windows.Forms.Padding(2);
-            this.button_ClientClose.Name = "button_ClientClose";
-            this.button_ClientClose.Size = new System.Drawing.Size(69, 22);
-            this.button_ClientClose.TabIndex = 7;
-            this.button_ClientClose.Text = "Close";
-            this.button_ClientClose.UseVisualStyleBackColor = true;
-            this.button_ClientClose.Click += new System.EventHandler(this.Button42_Click_1);
-            // 
-            // button_ClientConnect
-            // 
-            this.button_ClientConnect.Location = new System.Drawing.Point(31, 78);
-            this.button_ClientConnect.Margin = new System.Windows.Forms.Padding(2);
-            this.button_ClientConnect.Name = "button_ClientConnect";
-            this.button_ClientConnect.Size = new System.Drawing.Size(69, 22);
-            this.button_ClientConnect.TabIndex = 6;
-            this.button_ClientConnect.Text = "Connect";
-            this.button_ClientConnect.UseVisualStyleBackColor = true;
-            this.button_ClientConnect.Click += new System.EventHandler(this.Button_ClientConnect_Click);
-            // 
-            // textBox_ClientPort
-            // 
-            this.textBox_ClientPort.Location = new System.Drawing.Point(114, 46);
-            this.textBox_ClientPort.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_ClientPort.Name = "textBox_ClientPort";
-            this.textBox_ClientPort.Size = new System.Drawing.Size(92, 26);
-            this.textBox_ClientPort.TabIndex = 3;
-            this.textBox_ClientPort.Text = "7";
-            this.textBox_ClientPort.TextChanged += new System.EventHandler(this.textBox_ClientPort_TextChanged);
-            // 
-            // textBox_ClientIP
-            // 
-            this.textBox_ClientIP.Location = new System.Drawing.Point(114, 17);
-            this.textBox_ClientIP.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_ClientIP.Name = "textBox_ClientIP";
-            this.textBox_ClientIP.Size = new System.Drawing.Size(92, 26);
-            this.textBox_ClientIP.TabIndex = 2;
-            this.textBox_ClientIP.Text = "192.168.1.10";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(27, 46);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 23);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Port";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(27, 14);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 23);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Host or IP";
-            // 
             // tabPage_SerialPort
             // 
             this.tabPage_SerialPort.Controls.Add(this.button_OpenPort);
@@ -2037,6 +1833,215 @@ namespace Monitor
             this.SerialPortLogger_TextBox.TabIndex = 0;
             this.SerialPortLogger_TextBox.Text = "";
             this.SerialPortLogger_TextBox.TextChanged += new System.EventHandler(this.SerialPortLogger_TextBox_TextChanged);
+            // 
+            // tabPage_ClientTCP
+            // 
+            this.tabPage_ClientTCP.Controls.Add(this.groupBox33);
+            this.tabPage_ClientTCP.Controls.Add(this.groupBox31);
+            this.tabPage_ClientTCP.Controls.Add(this.button_Ping);
+            this.tabPage_ClientTCP.Controls.Add(this.button_ClientClose);
+            this.tabPage_ClientTCP.Controls.Add(this.button_ClientConnect);
+            this.tabPage_ClientTCP.Controls.Add(this.textBox_ClientPort);
+            this.tabPage_ClientTCP.Controls.Add(this.textBox_ClientIP);
+            this.tabPage_ClientTCP.Controls.Add(this.label8);
+            this.tabPage_ClientTCP.Controls.Add(this.label7);
+            this.tabPage_ClientTCP.Location = new System.Drawing.Point(4, 27);
+            this.tabPage_ClientTCP.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage_ClientTCP.Name = "tabPage_ClientTCP";
+            this.tabPage_ClientTCP.Size = new System.Drawing.Size(1414, 648);
+            this.tabPage_ClientTCP.TabIndex = 9;
+            this.tabPage_ClientTCP.Text = "Client TCP";
+            this.tabPage_ClientTCP.UseVisualStyleBackColor = true;
+            // 
+            // groupBox33
+            // 
+            this.groupBox33.Controls.Add(this.richTextBox_ClientTx);
+            this.groupBox33.Controls.Add(this.button_TCPClientTxSend);
+            this.groupBox33.Controls.Add(this.checkBox_TCPClientTxHex);
+            this.groupBox33.Controls.Add(this.button_TCPClientClear);
+            this.groupBox33.Location = new System.Drawing.Point(24, 102);
+            this.groupBox33.Name = "groupBox33";
+            this.groupBox33.Size = new System.Drawing.Size(1378, 92);
+            this.groupBox33.TabIndex = 19;
+            this.groupBox33.TabStop = false;
+            this.groupBox33.Text = "Tx - Data";
+            // 
+            // richTextBox_ClientTx
+            // 
+            this.richTextBox_ClientTx.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox_ClientTx.Location = new System.Drawing.Point(7, 14);
+            this.richTextBox_ClientTx.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox_ClientTx.Name = "richTextBox_ClientTx";
+            this.richTextBox_ClientTx.Size = new System.Drawing.Size(1235, 42);
+            this.richTextBox_ClientTx.TabIndex = 4;
+            this.richTextBox_ClientTx.Text = "";
+            this.richTextBox_ClientTx.TextChanged += new System.EventHandler(this.richTextBox_ClientTx_TextChanged);
+            // 
+            // button_TCPClientTxSend
+            // 
+            this.button_TCPClientTxSend.Location = new System.Drawing.Point(1246, 12);
+            this.button_TCPClientTxSend.Margin = new System.Windows.Forms.Padding(2);
+            this.button_TCPClientTxSend.Name = "button_TCPClientTxSend";
+            this.button_TCPClientTxSend.Size = new System.Drawing.Size(68, 22);
+            this.button_TCPClientTxSend.TabIndex = 5;
+            this.button_TCPClientTxSend.Text = "Send";
+            this.button_TCPClientTxSend.UseVisualStyleBackColor = true;
+            this.button_TCPClientTxSend.Click += new System.EventHandler(this.button_TCPClientTxSend_Click);
+            // 
+            // checkBox_TCPClientTxHex
+            // 
+            this.checkBox_TCPClientTxHex.AutoSize = true;
+            this.checkBox_TCPClientTxHex.Checked = true;
+            this.checkBox_TCPClientTxHex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_TCPClientTxHex.Location = new System.Drawing.Point(1247, 70);
+            this.checkBox_TCPClientTxHex.Name = "checkBox_TCPClientTxHex";
+            this.checkBox_TCPClientTxHex.Size = new System.Drawing.Size(127, 22);
+            this.checkBox_TCPClientTxHex.TabIndex = 16;
+            this.checkBox_TCPClientTxHex.Text = "Sent Hex format";
+            this.checkBox_TCPClientTxHex.UseVisualStyleBackColor = true;
+            // 
+            // button_TCPClientClear
+            // 
+            this.button_TCPClientClear.Location = new System.Drawing.Point(1246, 41);
+            this.button_TCPClientClear.Margin = new System.Windows.Forms.Padding(2);
+            this.button_TCPClientClear.Name = "button_TCPClientClear";
+            this.button_TCPClientClear.Size = new System.Drawing.Size(68, 23);
+            this.button_TCPClientClear.TabIndex = 8;
+            this.button_TCPClientClear.Text = "Clear Tx";
+            this.button_TCPClientClear.UseVisualStyleBackColor = true;
+            this.button_TCPClientClear.Click += new System.EventHandler(this.Button43_Click_1);
+            // 
+            // groupBox31
+            // 
+            this.groupBox31.Controls.Add(this.checkBox_RecordToFileTCPClient);
+            this.groupBox31.Controls.Add(this.richTextBox_ClientRx);
+            this.groupBox31.Controls.Add(this.checkBox_TCPClientRxHex);
+            this.groupBox31.Controls.Add(this.button_ClearRx);
+            this.groupBox31.Controls.Add(this.checkBox_ParseRxTCPBuffer);
+            this.groupBox31.Location = new System.Drawing.Point(24, 200);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Size = new System.Drawing.Size(1378, 432);
+            this.groupBox31.TabIndex = 18;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "Rx - Data";
+            // 
+            // richTextBox_ClientRx
+            // 
+            this.richTextBox_ClientRx.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox_ClientRx.Location = new System.Drawing.Point(7, 27);
+            this.richTextBox_ClientRx.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox_ClientRx.Name = "richTextBox_ClientRx";
+            this.richTextBox_ClientRx.ReadOnly = true;
+            this.richTextBox_ClientRx.Size = new System.Drawing.Size(1213, 400);
+            this.richTextBox_ClientRx.TabIndex = 9;
+            this.richTextBox_ClientRx.Text = "";
+            // 
+            // checkBox_TCPClientRxHex
+            // 
+            this.checkBox_TCPClientRxHex.AutoSize = true;
+            this.checkBox_TCPClientRxHex.Checked = true;
+            this.checkBox_TCPClientRxHex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_TCPClientRxHex.Location = new System.Drawing.Point(1224, 82);
+            this.checkBox_TCPClientRxHex.Name = "checkBox_TCPClientRxHex";
+            this.checkBox_TCPClientRxHex.Size = new System.Drawing.Size(122, 22);
+            this.checkBox_TCPClientRxHex.TabIndex = 17;
+            this.checkBox_TCPClientRxHex.Text = "Show Send Hex";
+            this.checkBox_TCPClientRxHex.UseVisualStyleBackColor = true;
+            // 
+            // button_ClearRx
+            // 
+            this.button_ClearRx.Location = new System.Drawing.Point(1224, 29);
+            this.button_ClearRx.Margin = new System.Windows.Forms.Padding(2);
+            this.button_ClearRx.Name = "button_ClearRx";
+            this.button_ClearRx.Size = new System.Drawing.Size(69, 22);
+            this.button_ClearRx.TabIndex = 11;
+            this.button_ClearRx.Text = "Clear Rx";
+            this.button_ClearRx.UseVisualStyleBackColor = true;
+            this.button_ClearRx.Click += new System.EventHandler(this.Button_ClearRx_Click);
+            // 
+            // checkBox_ParseRxTCPBuffer
+            // 
+            this.checkBox_ParseRxTCPBuffer.AutoSize = true;
+            this.checkBox_ParseRxTCPBuffer.Location = new System.Drawing.Point(1224, 56);
+            this.checkBox_ParseRxTCPBuffer.Name = "checkBox_ParseRxTCPBuffer";
+            this.checkBox_ParseRxTCPBuffer.Size = new System.Drawing.Size(146, 22);
+            this.checkBox_ParseRxTCPBuffer.TabIndex = 15;
+            this.checkBox_ParseRxTCPBuffer.Text = "Parse Rx TCP Buffer";
+            this.checkBox_ParseRxTCPBuffer.UseVisualStyleBackColor = true;
+            // 
+            // button_Ping
+            // 
+            this.button_Ping.Location = new System.Drawing.Point(178, 75);
+            this.button_Ping.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Ping.Name = "button_Ping";
+            this.button_Ping.Size = new System.Drawing.Size(91, 22);
+            this.button_Ping.TabIndex = 14;
+            this.button_Ping.Text = "Ping";
+            this.button_Ping.UseVisualStyleBackColor = true;
+            this.button_Ping.Click += new System.EventHandler(this.button72_Click);
+            // 
+            // button_ClientClose
+            // 
+            this.button_ClientClose.Location = new System.Drawing.Point(105, 77);
+            this.button_ClientClose.Margin = new System.Windows.Forms.Padding(2);
+            this.button_ClientClose.Name = "button_ClientClose";
+            this.button_ClientClose.Size = new System.Drawing.Size(69, 22);
+            this.button_ClientClose.TabIndex = 7;
+            this.button_ClientClose.Text = "Close";
+            this.button_ClientClose.UseVisualStyleBackColor = true;
+            this.button_ClientClose.Click += new System.EventHandler(this.Button42_Click_1);
+            // 
+            // button_ClientConnect
+            // 
+            this.button_ClientConnect.Location = new System.Drawing.Point(31, 78);
+            this.button_ClientConnect.Margin = new System.Windows.Forms.Padding(2);
+            this.button_ClientConnect.Name = "button_ClientConnect";
+            this.button_ClientConnect.Size = new System.Drawing.Size(69, 22);
+            this.button_ClientConnect.TabIndex = 6;
+            this.button_ClientConnect.Text = "Connect";
+            this.button_ClientConnect.UseVisualStyleBackColor = true;
+            this.button_ClientConnect.Click += new System.EventHandler(this.Button_ClientConnect_Click);
+            // 
+            // textBox_ClientPort
+            // 
+            this.textBox_ClientPort.Location = new System.Drawing.Point(114, 46);
+            this.textBox_ClientPort.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_ClientPort.Name = "textBox_ClientPort";
+            this.textBox_ClientPort.Size = new System.Drawing.Size(92, 26);
+            this.textBox_ClientPort.TabIndex = 3;
+            this.textBox_ClientPort.Text = "7";
+            this.textBox_ClientPort.TextChanged += new System.EventHandler(this.textBox_ClientPort_TextChanged);
+            // 
+            // textBox_ClientIP
+            // 
+            this.textBox_ClientIP.Location = new System.Drawing.Point(114, 17);
+            this.textBox_ClientIP.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_ClientIP.Name = "textBox_ClientIP";
+            this.textBox_ClientIP.Size = new System.Drawing.Size(92, 26);
+            this.textBox_ClientIP.TabIndex = 2;
+            this.textBox_ClientIP.Text = "192.168.1.10";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(27, 46);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 23);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Port";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(27, 14);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(87, 23);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Host or IP";
             // 
             // tabPage_Commands
             // 
@@ -4342,6 +4347,17 @@ namespace Monitor
             this.checkBox_Openall.UseVisualStyleBackColor = true;
             this.checkBox_Openall.CheckedChanged += new System.EventHandler(this.checkBox_Openall_CheckedChanged);
             // 
+            // checkBox_RecordToFileTCPClient
+            // 
+            this.checkBox_RecordToFileTCPClient.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_RecordToFileTCPClient.AutoSize = true;
+            this.checkBox_RecordToFileTCPClient.Location = new System.Drawing.Point(1225, 111);
+            this.checkBox_RecordToFileTCPClient.Name = "checkBox_RecordToFileTCPClient";
+            this.checkBox_RecordToFileTCPClient.Size = new System.Drawing.Size(100, 28);
+            this.checkBox_RecordToFileTCPClient.TabIndex = 18;
+            this.checkBox_RecordToFileTCPClient.Text = "Record to file";
+            this.checkBox_RecordToFileTCPClient.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -4380,12 +4396,6 @@ namespace Monitor
             this.tabPage_charts.ResumeLayout(false);
             this.tabPage_charts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.tabPage_ClientTCP.ResumeLayout(false);
-            this.tabPage_ClientTCP.PerformLayout();
-            this.groupBox33.ResumeLayout(false);
-            this.groupBox33.PerformLayout();
-            this.groupBox31.ResumeLayout(false);
-            this.groupBox31.PerformLayout();
             this.tabPage_SerialPort.ResumeLayout(false);
             this.groupBox_SendSerialOrMonitorCommands.ResumeLayout(false);
             this.groupBox_SendSerialOrMonitorCommands.PerformLayout();
@@ -4397,6 +4407,12 @@ namespace Monitor
             this.groupBox_Timer.PerformLayout();
             this.groupBox_Stopwatch.ResumeLayout(false);
             this.groupBox_Stopwatch.PerformLayout();
+            this.tabPage_ClientTCP.ResumeLayout(false);
+            this.tabPage_ClientTCP.PerformLayout();
+            this.groupBox33.ResumeLayout(false);
+            this.groupBox33.PerformLayout();
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox31.PerformLayout();
             this.tabPage_Commands.ResumeLayout(false);
             this.groupBox40.ResumeLayout(false);
             this.tabControl_System.ResumeLayout(false);
@@ -5043,6 +5059,7 @@ namespace Monitor
         private TextBox_Logger SystemLogger;
         private TextBox_Logger ServerLogger;
         private TextBox_Logger SerialPortLogger;
+        private TextBox_Logger TCPClietnLogger;
 
         //   Logger LogIWatcher;
         // TextBox_Logger LogSMS;
@@ -5258,7 +5275,7 @@ namespace Monitor
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            Gil_DelaySleep(5); //Gil: For let controls close and avoid exceptions.
             if (ClientSocket != null)
             {
                 if (ClientSocket.Connected == true)
@@ -7566,14 +7583,14 @@ namespace Monitor
                         {
                             if (checkBox_TCPClientRxHex.Checked == true)
                             {
-                                richTextBox_ClientRxPrintText("[" + DateTime.Now.TimeOfDay.ToString().Substring(0, 11) + "] " + ConvertByteArraytToString (TCPClientBuffer) + "\n");
+                                richTextBox_ClientRxPrintText( ConvertByteArraytToString (TCPClientBuffer));
                                 TCPClientBuffer = new byte[0];
                                 PClientSocket = ClientSocket;
                             }
                             else
                             {
                                 string str = System.Text.Encoding.Default.GetString(TCPClientBuffer);
-                                richTextBox_ClientRxPrintText("[" + DateTime.Now.TimeOfDay.ToString().Substring(0, 11) + "] " + str + "\n");
+                                richTextBox_ClientRxPrintText(str);
                                 TCPClientBuffer = new byte[0];
                                 PClientSocket = ClientSocket;
                             }
@@ -9077,7 +9094,8 @@ namespace Monitor
             button_Ping.BackColor = default;
             button_ClientConnect.BackColor = default;
 
-            richTextBox_ClientRx.AppendText("Connection closed \n");
+            TCPClietnLogger.LogMessage(Color.Black, Color.White, "Connection closed", New_Line = true, Show_Time = true); 
+           // richTextBox_ClientRx.AppendText("Connection closed \n");
         }
         private void Button42_Click_1(object sender, EventArgs e)
         {
@@ -9222,7 +9240,8 @@ namespace Monitor
             }
             catch (System.Net.Sockets.SocketException se)
             {
-                richTextBox_ClientRx.AppendText(se.Message + "\n");
+                TCPClietnLogger.LogMessage(Color.Red, Color.Azure, se.Message, New_Line = true, Show_Time = true);
+                //richTextBox_ClientRx.AppendText(se.Message + "\n");
             }
         }
 
@@ -9689,7 +9708,7 @@ namespace Monitor
 
         private void Button_ClearRx_Click(object sender, EventArgs e)
         {
-            richTextBox_ClientRx.Text = "";
+
         }
 
         private void GroupBox5_Enter(object sender, EventArgs e)
@@ -9851,11 +9870,12 @@ namespace Monitor
 
         private void richTextBox_ClientRxPrintText(string i_string)
         {
-            richTextBox_ClientRx.BeginInvoke(new EventHandler(delegate
-            {
-                richTextBox_ClientRx.AppendText(i_string);
-                richTextBox_ClientRx.ScrollToCaret();
-            }));
+            TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, i_string, New_Line = true, Show_Time = true);
+            //richTextBox_ClientRx.BeginInvoke(new EventHandler(delegate
+            //{
+            //    richTextBox_ClientRx.AppendText(i_string);
+            //    richTextBox_ClientRx.ScrollToCaret();
+            //}));
         }
 
         // int PingWaitTime = 0;
@@ -9901,9 +9921,10 @@ namespace Monitor
 
             }
 
-            catch
+            catch(Exception ex)
             {
-                richTextBox_ClientRx.AppendText("ERROR: You have Some TIMEOUT issue");
+                //richTextBox_ClientRx.AppendText("ERROR: You have Some TIMEOUT issue");
+                TCPClietnLogger.LogMessage(Color.Red, Color.Azure, ex.ToString(), New_Line = true, Show_Time = true);
             }
         }
 
@@ -13672,18 +13693,6 @@ This Process can take 1 minute.";
         }
 
 
-
-        private void ComboBox_SerialPortHistory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (comboBox_SerialPortHistory.SelectedItem != null )
-            //{
-            //    if (textBox_SendSerialPort.Text != comboBox_SerialPortHistory.SelectedItem.ToString())
-            //    {
-            //        textBox_SendSerialPort.Text = comboBox_SerialPortHistory.SelectedItem.ToString();
-            //    }
-            //}
-        }
-
         private void button_LoadScriptCLI_Click(object sender, EventArgs e)
         {
             var fileContent = string.Empty;
@@ -13724,21 +13733,7 @@ This Process can take 1 minute.";
 
         }
 
-        private void textBox_CommandActivation_TextChanged(object sender, EventArgs e)
-        {
-            TextBox txtbx = (TextBox)sender;
-            string WithoutSpaces = Regex.Replace(txtbx.Text, @"\s+", "");
-            byte[] buffer = StringToByteArray(WithoutSpaces);
 
-            if (buffer != null && buffer.Length == 1)
-            {
-                txtbx.BackColor = Color.LightGreen;
-            }
-            else
-            {
-                txtbx.BackColor = Color.Red;
-            }
-        }
 
         private void checkBox_WriteTotalbytes_CheckedChanged(object sender, EventArgs e)
         {
@@ -14296,7 +14291,7 @@ Description:
 Configure the recording system without starting
 
 Num of arguments:
-0
+1
 
 Syntax:
 
@@ -14434,7 +14429,8 @@ Use the arrows Up, Down and Tab for autocomplition.
                 ServerLogger = new TextBox_Logger("Server", TextBox_Server, button_ClearServer, checkBox_ServerPause, checkBox_ServerRecord, null, null, null, checkBox_StopLogging);
                 SerialPortLogger = new TextBox_Logger("Serial_Port", SerialPortLogger_TextBox, button_ClearSerialPort, checkBox_SerialPortPause, checkBox_SerialPortRecordLog, textBox_SerialPortRecognizePattern, textBox_SerialPortRecognizePattern2, textBox_SerialPortRecognizePattern3, null);
                 SystemLogger = new TextBox_Logger("SystemLogger", richTextBox_SSPA, button_ClearMiniAda, checkBox_PauseMiniAda, checkBox_RecordMiniAda, textBox_CLIrecognize1, textBox_CLIrecognize2, textBox_CLIrecognize3, checkBox_StopLogging);
-
+                TCPClietnLogger = new TextBox_Logger("TCPClietnLogger", richTextBox_ClientRx, button_ClearRx,  null,checkBox_RecordToFileTCPClient, null, null, null, null); ;
+                
 
                 ScanComports();
 
