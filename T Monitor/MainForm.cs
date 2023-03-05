@@ -424,8 +424,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -943,9 +943,9 @@ namespace Monitor
             // 
             this.tabControl_Main.Controls.Add(this.tabPage_ServerTCP);
             this.tabControl_Main.Controls.Add(this.tabPage_charts);
-            this.tabControl_Main.Controls.Add(this.tabPage_SerialPort);
             this.tabControl_Main.Controls.Add(this.tabPage_ClientTCP);
             this.tabControl_Main.Controls.Add(this.tabPage_Commands);
+            this.tabControl_Main.Controls.Add(this.tabPage_SerialPort);
             this.tabControl_Main.Location = new System.Drawing.Point(4, 5);
             this.tabControl_Main.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl_Main.Name = "tabControl_Main";
@@ -1300,17 +1300,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea3.AxisX.Title = "Freq";
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.AxisY.Title = "Power [dBm]";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend3.IsTextAutoFit = false;
-            legend3.Name = "Legend1";
-            legend3.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend3);
+            chartArea5.AxisX.Title = "Freq";
+            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.Title = "Power [dBm]";
+            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend5.IsTextAutoFit = false;
+            legend5.Name = "Legend1";
+            legend5.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend5);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -1872,14 +1872,14 @@ namespace Monitor
             this.richTextBox_ClientTx.Location = new System.Drawing.Point(7, 14);
             this.richTextBox_ClientTx.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox_ClientTx.Name = "richTextBox_ClientTx";
-            this.richTextBox_ClientTx.Size = new System.Drawing.Size(1235, 42);
+            this.richTextBox_ClientTx.Size = new System.Drawing.Size(1294, 37);
             this.richTextBox_ClientTx.TabIndex = 4;
             this.richTextBox_ClientTx.Text = "";
             this.richTextBox_ClientTx.TextChanged += new System.EventHandler(this.richTextBox_ClientTx_TextChanged);
             // 
             // button_TCPClientTxSend
             // 
-            this.button_TCPClientTxSend.Location = new System.Drawing.Point(1246, 12);
+            this.button_TCPClientTxSend.Location = new System.Drawing.Point(1305, 14);
             this.button_TCPClientTxSend.Margin = new System.Windows.Forms.Padding(2);
             this.button_TCPClientTxSend.Name = "button_TCPClientTxSend";
             this.button_TCPClientTxSend.Size = new System.Drawing.Size(68, 22);
@@ -1902,7 +1902,7 @@ namespace Monitor
             // 
             // button_TCPClientClear
             // 
-            this.button_TCPClientClear.Location = new System.Drawing.Point(1246, 41);
+            this.button_TCPClientClear.Location = new System.Drawing.Point(1305, 43);
             this.button_TCPClientClear.Margin = new System.Windows.Forms.Padding(2);
             this.button_TCPClientClear.Name = "button_TCPClientClear";
             this.button_TCPClientClear.Size = new System.Drawing.Size(68, 23);
