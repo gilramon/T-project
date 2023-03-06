@@ -12988,6 +12988,8 @@ This Process can take 1 minute.";
             String ret = "";
             int DelayBetweenReadWrite = 0;
 
+
+            i_Command = i_Command.Replace("0x", "");
             String[] tempStr = i_Command.Split(' ');
 
             //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
@@ -13114,6 +13116,7 @@ This Process can take 1 minute.";
             String ret = "";
             int DelayBetweenReadWrite = 0;
 
+            i_Command = i_Command.Replace("0x", "");
             String[] tempStr = i_Command.Split(' ');
 
             //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
@@ -13578,7 +13581,7 @@ This Process can take 1 minute.";
         {
             String ret = "";
 
-
+            i_Command = i_Command.Replace("0x", "");
             String[] tempStr = i_Command.Split(' ');
 
             //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
@@ -13643,7 +13646,7 @@ This Process can take 1 minute.";
         {
             String ret = "";
 
-
+            i_Command = i_Command.Replace("0x", "");
             String[] tempStr = i_Command.Split(' ');
 
             //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
@@ -14026,11 +14029,6 @@ This Process can take 1 minute.";
                             i++;
                             await Task.Delay(Delay);
 
-
-                            if (serialPort.IsOpen == false)
-                            {
-                                return;
-                            }
 
                             if (StopRuunScript == true)
                             {
