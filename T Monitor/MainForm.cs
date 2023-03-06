@@ -424,8 +424,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -1300,17 +1300,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea5.AxisX.Title = "Freq";
-            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisY.Title = "Power [dBm]";
-            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
-            legend5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend5.IsTextAutoFit = false;
-            legend5.Name = "Legend1";
-            legend5.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend5);
+            chartArea6.AxisX.Title = "Freq";
+            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.Title = "Power [dBm]";
+            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend6.IsTextAutoFit = false;
+            legend6.Name = "Legend1";
+            legend6.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -1923,7 +1923,7 @@ namespace Monitor
             this.groupBox31.Size = new System.Drawing.Size(1378, 432);
             this.groupBox31.TabIndex = 18;
             this.groupBox31.TabStop = false;
-            this.groupBox31.Text = "Rx - Data";
+            this.groupBox31.Text = "TCP/IP client logger";
             // 
             // richTextBox_ClientRx
             // 
@@ -7583,14 +7583,23 @@ namespace Monitor
                         {
                             if (checkBox_TCPClientRxHex.Checked == true)
                             {
-                                richTextBox_ClientRxPrintText( ConvertByteArraytToString (TCPClientBuffer));
+                                TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
+                                TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
+                                TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, ConvertByteArraytToString(TCPClientBuffer), true, false);
+
+                                //richTextBox_ClientRxPrintText( ConvertByteArraytToString (TCPClientBuffer));
                                 TCPClientBuffer = new byte[0];
                                 PClientSocket = ClientSocket;
                             }
                             else
                             {
                                 string str = System.Text.Encoding.Default.GetString(TCPClientBuffer);
-                                richTextBox_ClientRxPrintText(str);
+
+                                TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
+                                TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
+                                TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, str, true, false);
+
+                               // richTextBox_ClientRxPrintText(str);
                                 TCPClientBuffer = new byte[0];
                                 PClientSocket = ClientSocket;
                             }
@@ -9214,7 +9223,9 @@ namespace Monitor
                 bool success = result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(1));
                 if (!success)
                 {
-                    richTextBox_ClientRxPrintText(string.Format("Failed to connect to [{0}] [{1}]\n", szIPSelected, szPort));
+                    TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, string.Format("Failed to connect to [{0}] [{1}]", szIPSelected, szPort), New_Line = true, Show_Time = true);
+
+                 //   richTextBox_ClientRxPrintText(string.Format("Failed to connect to [{0}] [{1}]\n", szIPSelected, szPort));
                     return;
                 }
                 else
@@ -9330,7 +9341,7 @@ namespace Monitor
                 byte[] DataBytes = StringToByteArray(i_Data);
                 UInt32 Datalength = (UInt32)DataBytes.Length;
                 byte[] intBytes = BitConverter.GetBytes(Datalength);
-                ListBytes.AddRange(intBytes);
+                ListBytes.AddRange(intBytes.Reverse()); 
 
 
                 ListBytes.AddRange(DataBytes);
@@ -9342,7 +9353,7 @@ namespace Monitor
                     CheckSum += ListBytes[i];
                 }
                 intBytes = BitConverter.GetBytes(CheckSum);
-                ListBytes.AddRange(intBytes);
+                ListBytes.AddRange(intBytes.Reverse());
 
                // byte[] Ret = ListBytes.ToArray();
 
@@ -9868,15 +9879,15 @@ namespace Monitor
 
 
 
-        private void richTextBox_ClientRxPrintText(string i_string)
-        {
-            TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, i_string, New_Line = true, Show_Time = true);
-            //richTextBox_ClientRx.BeginInvoke(new EventHandler(delegate
-            //{
-            //    richTextBox_ClientRx.AppendText(i_string);
-            //    richTextBox_ClientRx.ScrollToCaret();
-            //}));
-        }
+        //private void richTextBox_ClientRxPrintText(string i_string)
+        //{
+        //    TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, i_string, New_Line = true, Show_Time = true);
+        //    //richTextBox_ClientRx.BeginInvoke(new EventHandler(delegate
+        //    //{
+        //    //    richTextBox_ClientRx.AppendText(i_string);
+        //    //    richTextBox_ClientRx.ScrollToCaret();
+        //    //}));
+        //}
 
         // int PingWaitTime = 0;
         private void button72_Click(object sender, EventArgs e)
@@ -9898,7 +9909,10 @@ namespace Monitor
                     {
                         //  PingWaitTime = 0;
                         // richTextBox_ClientRx.AppendText(String.Format("Failed to connect to [{0}] [{1}]\n", szIPSelected, szPort));
-                        richTextBox_ClientRxPrintText("\n Status :  " + reply.Status + " \n Time : " + reply.RoundtripTime.ToString() + " \n Address : " + reply.Address);
+                        //richTextBox_ClientRxPrintText();
+
+                        TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, "\n Status :  " + reply.Status + " \n Time : " + reply.RoundtripTime.ToString() + " \n Address : " + reply.Address, New_Line = true, Show_Time = true);
+
 
                         button_Ping.Text = "Ping";
                         if (reply.Status == IPStatus.Success)
@@ -12966,6 +12980,7 @@ This Process can take 1 minute.";
         }
         
         Int32 GlobalReadRegister = 0;
+        Int64 GlobalReadRegister64 = 0;
         // bool GlobalReadRegisterWritten = false;
         int MessageCounter = 0;
         async Task<String> WriteReg32(String i_Command, bool i_OnlyCheckValidity)
@@ -13077,8 +13092,134 @@ This Process can take 1 minute.";
 
 
 
-                List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "70", RegisterAddress32bits + DataToWrite32bits);
+                List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "71", RegisterAddress32bits + DataToWrite32bits);
            
+                if (ret == "" && i_OnlyCheckValidity == false)
+                {
+                    //Execute the command
+                    PrintToSystemLogerTxMessage(i_Command);
+                    richTextBox_ClientTx.Text = ConvertByteArraytToString(ListBytes.ToArray());
+
+                    //Button3_Click_4(null, null);
+                    //button_TCPClientTxSend.PerformClick();
+                    button_TCPClientTxSend_Click(null, null);
+                }
+            }
+
+            return ret;
+        }
+
+        async Task<String> WriteReg64(String i_Command, bool i_OnlyCheckValidity)
+        {
+            String ret = "";
+            int DelayBetweenReadWrite = 0;
+
+            String[] tempStr = i_Command.Split(' ');
+
+            //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+            ///
+
+
+            int NumOfArguments = tempStr.Length;
+            if (!(NumOfArguments == 5 || NumOfArguments == 3))
+            {
+                ret += String.Format("\n Arguments number should be 3 or 5, see example", NumOfArguments);
+                return ret;
+            }
+
+            byte[] buffer = StringToByteArray(tempStr[1]);
+            if (buffer == null || buffer.Length != 8)
+            {
+                ret += String.Format("\n Argument [{0}] invalid not hex value or not 8 bytes", tempStr[1]);
+                //   return ret;
+            }
+
+
+
+            buffer = StringToByteArray(tempStr[2]);
+
+            if (buffer == null || buffer.Length != 8)
+            {
+                ret += String.Format("\n Argument [{0}] invalid not hex value or not 8 bytes", tempStr[2]);
+                //    return ret;
+            }
+
+            if (NumOfArguments == 5)
+            {
+                buffer = StringToByteArray(tempStr[3]);
+
+                if (buffer == null || buffer.Length != 8)
+                {
+                    ret += String.Format("\n Argument [{0}] invalid not hex value or not 8 bytes", tempStr[3]);
+                    //  return ret;
+                }
+
+
+
+                if (int.TryParse(tempStr[4], out DelayBetweenReadWrite) == false)
+                {
+                    ret += String.Format("\n Argument [{0}] invalid not int", tempStr[4]);
+                    //  return ret;
+                }
+            }
+
+            if (i_OnlyCheckValidity == true || ret != "")
+            {
+                return ret;
+            }
+            String Command = tempStr[0];
+            String RegisterAddress64bits = tempStr[1];
+            String DataToWrite64bits = tempStr[2];
+
+            if (NumOfArguments == 5)
+            {
+                PrintToSystemLogerTxMessage(i_Command);
+                String MaskString = tempStr[3];
+                //String NotMaskValue = "FFFFFFFF";
+                //if (MaskString != NotMaskValue)
+                //{
+                GlobalReadRegister = 0;
+                //GlobalReadRegisterWritten = false;
+                Int64 MaskInt64 = Int64.Parse(MaskString, System.Globalization.NumberStyles.HexNumber);
+                Int64 DataToWrite = Int64.Parse(DataToWrite64bits, System.Globalization.NumberStyles.HexNumber);
+
+                //ReadReg32(String.Format("ReadReg {0}", RegisterAddress32bits), false);
+                await ExecuteCLICommand(String.Format("ReadReg64 {0}", RegisterAddress64bits), false);
+
+                await Task.Delay(DelayBetweenReadWrite);
+
+                //while (GlobalReadRegisterWritten == false)
+                //{
+                //    await Task.Delay(100);
+                //}
+
+                // prefer number = number & ~(1 << n) | (x << n); for Changing the n-th bit to x. – 
+
+                for (int i = 0; i < 64; i++)
+                {
+                    if (((MaskInt64 >> i) & 1U) == 0)
+                    {
+                        Int64 BitStatus = (DataToWrite >> i) & 1;
+                        GlobalReadRegister64 = (GlobalReadRegister64 & ~(1 << i)) | (BitStatus << i);
+                    }
+
+                }
+
+                //await WriteReg32(String.Format("WriteReg32 {0} {1}", RegisterAddress32bits, GlobalReadRegister.ToString("X8")),false);
+                await ExecuteCLICommand(String.Format("WriteReg64 {0} {1}", RegisterAddress64bits, GlobalReadRegister64.ToString("X16")), false);
+
+
+                //       }
+            }
+            else
+            {
+
+
+
+                List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "73", RegisterAddress64bits + DataToWrite64bits);
+
                 if (ret == "" && i_OnlyCheckValidity == false)
                 {
                     //Execute the command
@@ -13477,7 +13618,72 @@ This Process can take 1 minute.";
             /////////////////////////////////////////////////////////////////
 
 
-            List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "71", RegisterAddress32bits);
+            List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "70", RegisterAddress32bits);
+
+            if (ret == "" && i_OnlyCheckValidity == false)
+            {
+                //Execute the command
+                PrintToSystemLogerTxMessage(i_Command);
+                richTextBox_ClientTx.Text = ConvertByteArraytToString(ListBytes.ToArray());
+
+                //Button3_Click_4(null, null);
+                //button_TCPClientTxSend.PerformClick();
+                button_TCPClientTxSend_Click(null, null);
+            }
+
+
+
+
+
+
+            return ret;
+        }
+
+        String ReadReg64(String i_Command, bool i_OnlyCheckValidity)
+        {
+            String ret = "";
+
+
+            String[] tempStr = i_Command.Split(' ');
+
+            //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+            ///
+
+            if (tempStr.Length != 2)
+            {
+                ret += String.Format("\n Arguments number should be 2, see example");
+                return ret;
+            }
+
+
+            byte[] buffer = StringToByteArray(tempStr[1]);
+
+            if (buffer == null || buffer.Length != 8)
+            {
+                ret += String.Format("\n Argument [{0}] invalid not hex value or not 8 bytes", tempStr[1]);
+                return ret;
+            }
+
+            if (i_OnlyCheckValidity == true || ret!= "")
+            {
+                return ret;
+            }
+
+            //Init all the commands //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            String Command = tempStr[0];
+            String RegisterAddress64bits = tempStr[1];
+
+
+            // Excute the command //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+
+
+            List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "72", RegisterAddress64bits);
 
             if (ret == "" && i_OnlyCheckValidity == false)
             {
@@ -13588,13 +13794,24 @@ This Process can take 1 minute.";
                     //ret = await ExectuteOrCheckValidityCommand(i_Command, false);
                     switch (CommandName)
                     {
-                        case "WriteReg32":
-                            ret = await WriteReg32(i_Command, i_OnlyCheckValidity);
-                            break;
 
                         case "ReadReg32":
                             ret = ReadReg32(i_Command, i_OnlyCheckValidity);
                             break;
+
+                        case "WriteReg32":
+                            ret = await WriteReg32(i_Command, i_OnlyCheckValidity);
+                            break;
+
+                        case "ReadReg64":
+                            ret = ReadReg64(i_Command, i_OnlyCheckValidity);
+                            break;
+
+                        case "WriteReg64":
+                            ret = await WriteReg64(i_Command, i_OnlyCheckValidity);
+                            break;
+
+
 
                         case "clear":
                             button_ClearMiniAda.PerformClick();
@@ -14088,11 +14305,15 @@ This Process can take 1 minute.";
                     if (buffer != null)
                     {
                         stm.Write(buffer, 0, buffer.Length);
+
+                        TCPClietnLogger.LogMessage(Color.Purple, Color.Yellow, "", New_Line = false, Show_Time = true);
+                        TCPClietnLogger.LogMessage(Color.Purple, Color.Yellow, "Tx:>", false, false);
+                        TCPClietnLogger.LogMessage(Color.Purple, Color.Yellow, ConvertByteArraytToString(buffer), true, false);
+
                     }
                     else
                     {
                         WriteToSystemStatus("Not Hex data format for example: aabbcc is 0xAA 0xBB 0xCC", 5, Color.Red);
-                        //   SerialPortLogger.LogMessage(Color.Red, Color.LightGray, "Not Hex data format for example: aabbcc is 0xAA 0xBB 0xCC", New_Line = true, Show_Time = false);
                         return;
                     }
 
@@ -14183,6 +14404,68 @@ This Process can take 1 minute.";
 
         void SetAllCLIcommands()
         {
+
+
+
+
+            CommandClass WriteReg64 = new CommandClass("WriteReg64",
+@"
+Description: 
+Write to Register 64 bit with 64 bit data
+
+Number of arguments:
+2 or 4
+
+Syntax 2 arguments:
+WriteReg64
+address [8 hex bytes] 
+data [8 hex bytes]
+
+Syntax 4 arguments:
+WriteReg 
+address [8 hex bytes] 
+data [8 hex bytes]
+mask [8 hex bytes] - if mask is set
+Delay between Read and write (only when using mask) [integer decimal]
+
+Examples:
+
+WriteReg64 0123456789ABCDEF 1122334455667788
+    Write to Register 0123456789ABCDEF 1122334455667788
+
+
+",
+"WriteReg64 0000000000000004 1122334455667788");
+
+            //WriteReg32.Example = "WriteReg AAAAAAAA BBBBBBBB FFFF0000 1000";
+
+            List_AllCommands.Add(WriteReg64);
+
+
+
+
+
+
+
+            CommandClass ReadReg64 = new CommandClass("ReadReg64",
+@"
+Description: 
+Read From Register 
+
+Num of arguments:
+1
+
+Syntax:
+ReadReg address [8 hex bytes]
+
+Example:
+
+ReadReg64 0123456789ABCDEF ---> Read from Register 0123456789ABCDEF
+",
+"ReadReg64 0000000000000004");
+
+            List_AllCommands.Add(ReadReg64);
+
 
 
 

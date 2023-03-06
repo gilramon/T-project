@@ -306,21 +306,24 @@ namespace Monitor
                     LogClassArray = LogClassArray.OrderBy(x => x.Msg_DatetimeCreated).Take(50).ToList();
                 }
 
-                if (m_RecordTofile.Checked)
-                {
-                    // your code goes here
-
-                    bool isExists = System.IO.Directory.Exists(subPath);
-
-                    if (!isExists)
+                if(m_RecordTofile != null) 
+                { 
+                    if (m_RecordTofile.Checked)
                     {
-                        System.IO.Directory.CreateDirectory(subPath);
-                    }
-                    // This text is always added, making the file longer over time 
-                    // if it is not deleted. 
-                    using (StreamWriter sw = File.AppendText(subPath + m_log_file_name))
-                    {
-                        sw.Write(logclass.Msg);
+                        // your code goes here
+
+                        bool isExists = System.IO.Directory.Exists(subPath);
+
+                        if (!isExists)
+                        {
+                            System.IO.Directory.CreateDirectory(subPath);
+                        }
+                        // This text is always added, making the file longer over time 
+                        // if it is not deleted. 
+                        using (StreamWriter sw = File.AppendText(subPath + m_log_file_name))
+                        {
+                            sw.Write(logclass.Msg);
+                        }
                     }
                 }
 
@@ -393,16 +396,16 @@ namespace Monitor
 
                 }
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
-                try
-                {
-                    m_txtBox.AppendText(ex.ToString());
-                }
-                catch
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+                //try
+                //{
+                //    m_txtBox.AppendText(ex.ToString());
+                //}
+                //catch
+                //{
+                //    MessageBox.Show(ex.ToString());
+                //}
             }
         }
 
