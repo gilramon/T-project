@@ -370,7 +370,7 @@ namespace Monitor
         private GroupBox groupBox31;
         private GroupBox groupBox33;
         private CheckBox checkBox_RecordToFileTCPClient;
-        private static readonly string PREAMBLE = "0054";
+        private static readonly string PREAMBLE = "54";
 
 
         /// <summary>
@@ -13077,7 +13077,7 @@ This Process can take 1 minute.";
 
 
 
-                List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "0070", RegisterAddress32bits + DataToWrite32bits);
+                List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "70", RegisterAddress32bits + DataToWrite32bits);
            
                 if (ret == "" && i_OnlyCheckValidity == false)
                 {
@@ -13477,7 +13477,7 @@ This Process can take 1 minute.";
             /////////////////////////////////////////////////////////////////
 
 
-            List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "0071", RegisterAddress32bits);
+            List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "71", RegisterAddress32bits);
 
             if (ret == "" && i_OnlyCheckValidity == false)
             {

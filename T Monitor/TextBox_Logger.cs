@@ -330,13 +330,14 @@ namespace Monitor
                     //bool PrintMesseges = true;
                     IsPrinting = true;
                     // Gil: to avoid : Collection was modified; enumeration operation may not execute.
-                    if (m_txtBox == null)
+
+
+                    if ( m_txtBox.IsHandleCreated == false)
                     {
                         return;
                     }
 
-
-                    m_txtBox.BeginInvoke(new EventHandler(delegate
+                        m_txtBox.BeginInvoke(new EventHandler(delegate
                     {
                         //LogClass[] LogClassArrayCopy = new LogClass[LogClassArray.Count];
                         List<LogClass> LogClassArrayCopy = new List<LogClass>();
