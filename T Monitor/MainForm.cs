@@ -424,8 +424,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -1300,17 +1300,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea6.AxisX.Title = "Freq";
-            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisY.Title = "Power [dBm]";
-            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
-            legend6.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend6.IsTextAutoFit = false;
-            legend6.Name = "Legend1";
-            legend6.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend6);
+            chartArea8.AxisX.Title = "Freq";
+            chartArea8.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea8.AxisY.Title = "Power [dBm]";
+            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea8.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea8);
+            legend8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend8.IsTextAutoFit = false;
+            legend8.Name = "Legend1";
+            legend8.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend8);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -1962,6 +1962,8 @@ namespace Monitor
             // checkBox_ParseRxTCPBuffer
             // 
             this.checkBox_ParseRxTCPBuffer.AutoSize = true;
+            this.checkBox_ParseRxTCPBuffer.Checked = true;
+            this.checkBox_ParseRxTCPBuffer.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_ParseRxTCPBuffer.Location = new System.Drawing.Point(1224, 56);
             this.checkBox_ParseRxTCPBuffer.Name = "checkBox_ParseRxTCPBuffer";
             this.checkBox_ParseRxTCPBuffer.Size = new System.Drawing.Size(146, 22);
@@ -2161,7 +2163,7 @@ namespace Monitor
             this.textBox_CLISendCommands.Name = "textBox_CLISendCommands";
             this.textBox_CLISendCommands.Size = new System.Drawing.Size(828, 29);
             this.textBox_CLISendCommands.TabIndex = 110;
-            this.textBox_CLISendCommands.Text = "";
+            this.textBox_CLISendCommands.Text = "ReadReg32 a01a000c";
             this.textBox_CLISendCommands.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_CLISendCommands_KeyDown);
             this.textBox_CLISendCommands.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.TextBox_SendSerialPort_PreviewKeyDown);
             // 
@@ -6390,9 +6392,13 @@ namespace Monitor
 
         void WriteToSystemStatus(String i_Message, uint i_Time, Color i_Color)
         {
-            textBox_SystemStatus.AppendText(i_Message + Environment.NewLine + Environment.NewLine);
-            textBox_SystemStatus.BackColor = i_Color;
-            textBox_SystemStatus_Timer += i_Time;
+            try
+            {
+                textBox_SystemStatus.AppendText(i_Message + Environment.NewLine + Environment.NewLine);
+                textBox_SystemStatus.BackColor = i_Color;
+                textBox_SystemStatus_Timer += i_Time;
+            }
+            catch { }
         }
 
         private string UnHandledOpcode(KratosProtocolFrame i_Parsedframe)
@@ -7482,7 +7488,7 @@ namespace Monitor
         {
             try
             {
-                if ((i_IncomeBuffer.Length == 0) || (i_IncomeBuffer.Length < 80) || (i_IncomeBuffer[0] != 0x83))
+                if ((i_IncomeBuffer.Length == 0))
                 {
                     return;
                 }
@@ -7490,8 +7496,9 @@ namespace Monitor
                 {
                     while (i_IncomeBuffer.Length != 0)
                     {
-                        DecodeIFRSProtocol(ref i_IncomeBuffer);
+                        //DecodeIFRSProtocol(ref i_IncomeBuffer);
 
+                        DecodeKratusProtocol(ref i_IncomeBuffer);
 
                         TCPClientBuffer = new byte[0];
 
@@ -7506,8 +7513,6 @@ namespace Monitor
 
         private string GlobalSystemResultReceived;
 
-        // int ChartIndex = 0;
-        //SSPA_Parser MiniAdaParser = new SSPA_Parser();
         private void ParseIncomeBuffer_TCPIP()
         {
             try
@@ -7907,27 +7912,8 @@ namespace Monitor
 
             if (checkBox_RxHex.Checked == true)
             {
-
-
-                if (buffer[0] == 0x83)
-                {
-                    SerialPortLogger.LogMessage(Color.Blue, Color.Pink, ConvertByteArraytToString(buffer.Take(2).ToArray()), New_Line = false, Show_Time = false);
-                    SerialPortLogger.LogMessage(Color.Blue, Color.Cyan, ConvertByteArraytToString(buffer.Skip(2).Take(23).ToArray()), New_Line = false, Show_Time = false);
-                    SerialPortLogger.LogMessage(Color.Blue, Color.Azure, ConvertByteArraytToString(buffer.Skip(25).Take(55).ToArray()), New_Line = false, Show_Time = false);
-                    SerialPortLogger.LogMessage(Color.Blue, Color.PeachPuff, ConvertByteArraytToString(buffer.Skip(76).Take(4).ToArray()), New_Line = true, Show_Time = false);
-                }
-                else
-                {
-                    string IncomingHexMessage = ConvertByteArraytToString(buffer);
-                    SerialPortLogger.LogMessage(Color.Blue, Color.Azure, IncomingHexMessage, New_Line = true, Show_Time = false);
-                }
-
-
-
-
-
-
-
+                string IncomingHexMessage = ConvertByteArraytToString(buffer);
+                SerialPortLogger.LogMessage(Color.Blue, Color.Azure, IncomingHexMessage, New_Line = true, Show_Time = false); 
                 ParseKratosIncomeFrame(buffer);
             }
             else
@@ -9122,7 +9108,7 @@ namespace Monitor
             StringBuilder hex = new StringBuilder(ba.Length * 2);
             foreach (byte b in ba)
             {
-                hex.AppendFormat("{0:x2} ", b);
+                hex.AppendFormat("{0:x2}", b);
             }
 
             return hex.ToString();
@@ -9271,16 +9257,17 @@ namespace Monitor
             }
         }
 
-        public KratosProtocolFrame DecodeKratusProtocol(byte[] i_IncomingBytes)
+        public void DecodeKratusProtocol(ref byte[] i_IncomingBytes)
         {
             KratosProtocolFrame Ret = new KratosProtocolFrame();
 
             try
             {
-                byte[] DataLengthBytes = i_IncomingBytes.Skip(4).Take(4).ToArray();
+                byte[] DataLengthBytes = i_IncomingBytes.Skip(2).Take(4).Reverse().ToArray();
+                
 
                 UInt32 FrameDataLength = BitConverter.ToUInt32(DataLengthBytes, 0);
-                int CheckSumIndex = (int)FrameDataLength + 8;
+                int CheckSumIndex = (int)FrameDataLength + 6;
 
 
                 UInt16 CheckSumCalc = 0;
@@ -9290,42 +9277,131 @@ namespace Monitor
                     CheckSumCalc += i_IncomingBytes[i];
                 }
 
-                byte[] CheckSumBytes = i_IncomingBytes.Skip(CheckSumIndex).Take(2).ToArray();
+                byte[] CheckSumBytes = i_IncomingBytes.Skip(CheckSumIndex).Take(2).Reverse().ToArray();
                 UInt16 CheckSumSent = BitConverter.ToUInt16(CheckSumBytes, 0);
 
                 if (CheckSumSent == CheckSumCalc)
                 {
 
-                    Ret.Preamble = ByteArrayToString(i_IncomingBytes.Skip(0).Take(2).ToArray());
+                    Ret.Preamble = ByteArrayToString(i_IncomingBytes.Skip(0).Take(1).ToArray());
 
-                    Ret.Opcode = ByteArrayToString(i_IncomingBytes.Skip(2).Take(2).ToArray());
+                    Ret.Opcode = ByteArrayToString(i_IncomingBytes.Skip(1).Take(1).ToArray());
 
-                    Ret.Data = ByteArrayToString(i_IncomingBytes.Skip(8).Take((int)FrameDataLength).ToArray());
+                    Ret.Data = ByteArrayToString(i_IncomingBytes.Skip(6).Take((int)FrameDataLength).ToArray());
 
                     Ret.DataLength = FrameDataLength.ToString();
 
                     Ret.CheckSum = CheckSumSent.ToString("X4");
-                    return Ret;
 
+                    ParseOne_T_Project_Frame(Ret);
+                    
+                    //SystemLogger.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
+                    //SystemLogger.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
+                    //SystemLogger.LogMessage(Color.Blue, Color.LightGray, Ret.Data, true, false);
+
+
+                    i_IncomingBytes = i_IncomingBytes.Skip((int)FrameDataLength + 8).ToArray();
 
                 }
                 else
                 {
                     //throw new Exception("Check sum failed!");
-                    WriteToSystemStatus("Tx Client check sum failed!!", 5, Color.Orange);
-                    return null;
+                    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, "Check sum failed!", New_Line = true, Show_Time = true);
+                   // WriteToSystemStatus("Tx Client check sum failed!!", 5, Color.Orange);
+
+                    i_IncomingBytes = new byte[0]; 
                 }
+
 
             }
             catch (Exception ex)
             {
                 WriteToSystemStatus(ex.Message, 5, Color.Orange);
                 //   throw new Exception(ex.Message);
-                return null;
 
             }
 
 
+        }
+
+        void ParseOne_T_Project_Frame(KratosProtocolFrame i_incomeframe)
+        {
+            SystemLogger.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
+            SystemLogger.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
+
+            if (i_incomeframe.Preamble != "54")
+            {
+                SystemLogger.LogMessage(Color.Orange, Color.LightGray, String.Format("Frame not start with 0x54"), true, false);
+                return;
+            }
+            
+            switch (i_incomeframe.Opcode)
+            {
+                //Read conmmand
+                case "70":
+                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format( "Register 32 bit Value [{0}]",i_incomeframe.Data), true, false);
+                    break;
+
+                case "71":
+                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format("Write register 32 ACK recieved"), true, false);
+                    break;
+
+                case "72":
+                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format("Register 64 bit Value [{0}]", i_incomeframe.Data), true, false);
+                    break;
+
+                case "73":
+                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format("Write register 64 ACK recieved"), true, false);
+                    break;
+
+
+                ////Write conmmand
+                //case 0x21:
+                //    DecodeWriteCommand(i_IncomingBytes);
+                //    break;
+                ////SetFullParams commmand
+                //case 0x51:
+                //    DecodeSetFullParamsCommand(i_IncomingBytes);
+                //    break;
+
+                //case 0xF0:
+                //    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Header error [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                //    break;
+
+                //case 0xF1:
+                //    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Command error [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                //    break;
+
+                //case 0xF2:
+                //    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Checksum error [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                //    break;
+
+                //case 0xF3:
+                //    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Data error [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                //    break;
+
+                //case 0xF4:
+                //    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Execution Error  [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                //    break;
+
+                //case 0xF5:
+                //    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Time-out Error type 1  [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                //    break;
+
+                //case 0xF6:
+                //    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Time-out Error type 2 [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                //    break;
+
+                //case 0xF7:
+                //    SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Time-out Error type 3 [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                //    break;
+
+                default:
+                    //SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, String.Format("Not recognize CMD opcode [{0}]", i_IncomingBytes[1].ToString("X")), true, true);
+                    SystemLogger.LogMessage(Color.OrangeRed, Color.White, "Unhandeled Op code:    ", false, false);
+                    SystemLogger.LogMessage(Color.OrangeRed, Color.White, i_incomeframe.ToString(), true, true);
+                    break;
+            }
         }
 
         public List<byte> EncodeKratusProtocol(string i_Preamble, string i_Opcode, string i_Data)
@@ -13020,7 +13096,7 @@ This Process can take 1 minute.";
             {
                 ret += String.Format("\n Argument [{0}] invalid not hex value or not 4 bytes", tempStr[2]);
                 //    return ret;
-            }
+            }       
 
             if (NumOfArguments == 5)
             {
@@ -14523,7 +14599,7 @@ Example:
 
 ReadReg32 AAAAAAAA ---> Read from Register 0xAAAAAAAA
 ",
-"ReadReg32 00000000");
+"ReadReg32 A01A000C");
 
             List_AllCommands.Add(ReadReg32);
 
