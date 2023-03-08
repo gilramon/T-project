@@ -424,8 +424,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -467,47 +467,6 @@ namespace Monitor
             this.textBox_graph_XY = new System.Windows.Forms.TextBox();
             this.button_ScreenShot = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage_SerialPort = new System.Windows.Forms.TabPage();
-            this.button_OpenPort = new System.Windows.Forms.Button();
-            this.groupBox_SendSerialOrMonitorCommands = new System.Windows.Forms.GroupBox();
-            this.textBox_SendSerialPortPeriod = new System.Windows.Forms.TextBox();
-            this.checkBox_SendEveryOneSecond = new System.Windows.Forms.CheckBox();
-            this.checkBox_SendHexdata = new System.Windows.Forms.CheckBox();
-            this.textBox_SendSerialPort = new System.Windows.Forms.TextBox();
-            this.checkBox_DeleteCommand = new System.Windows.Forms.CheckBox();
-            this.button_SendSerialPort = new System.Windows.Forms.Button();
-            this.gbPortSettings = new System.Windows.Forms.GroupBox();
-            this.cmb_StopBits = new System.Windows.Forms.ComboBox();
-            this.cmbParity = new System.Windows.Forms.ComboBox();
-            this.cmb_PortName = new System.Windows.Forms.ComboBox();
-            this.button_ReScanComPort = new System.Windows.Forms.Button();
-            this.cmbBaudRate = new System.Windows.Forms.ComboBox();
-            this.cmbDataBits = new System.Windows.Forms.ComboBox();
-            this.lblComPort = new System.Windows.Forms.Label();
-            this.lblStopBits = new System.Windows.Forms.Label();
-            this.lblBaudRate = new System.Windows.Forms.Label();
-            this.lblDataBits = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox_WriteFrameInformation = new System.Windows.Forms.CheckBox();
-            this.groupBox_Timer = new System.Windows.Forms.GroupBox();
-            this.textBox_TimerTime = new System.Windows.Forms.TextBox();
-            this.button_StartStopTimer = new System.Windows.Forms.Button();
-            this.button_ResetTimer = new System.Windows.Forms.Button();
-            this.textBox_SetTimerTime = new System.Windows.Forms.TextBox();
-            this.groupBox_Stopwatch = new System.Windows.Forms.GroupBox();
-            this.button_TimerLog = new System.Windows.Forms.Button();
-            this.button_Stopwatch_Start_Stop = new System.Windows.Forms.Button();
-            this.button_StopwatchReset = new System.Windows.Forms.Button();
-            this.textBox_StopWatch = new System.Windows.Forms.TextBox();
-            this.checkBox_RxHex = new System.Windows.Forms.CheckBox();
-            this.textBox_SerialPortRecognizePattern3 = new System.Windows.Forms.TextBox();
-            this.textBox_SerialPortRecognizePattern2 = new System.Windows.Forms.TextBox();
-            this.textBox_SerialPortRecognizePattern = new System.Windows.Forms.TextBox();
-            this.checkBox_SerialPortRecordLog = new System.Windows.Forms.CheckBox();
-            this.checkBox_SerialPortPause = new System.Windows.Forms.CheckBox();
-            this.button_ClearSerialPort = new System.Windows.Forms.Button();
-            this.SerialPortLogger_TextBox = new System.Windows.Forms.RichTextBox();
             this.tabPage_ClientTCP = new System.Windows.Forms.TabPage();
             this.groupBox33 = new System.Windows.Forms.GroupBox();
             this.richTextBox_ClientTx = new System.Windows.Forms.RichTextBox();
@@ -515,6 +474,7 @@ namespace Monitor
             this.checkBox_TCPClientTxHex = new System.Windows.Forms.CheckBox();
             this.button_TCPClientClear = new System.Windows.Forms.Button();
             this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.checkBox_RecordToFileTCPClient = new System.Windows.Forms.CheckBox();
             this.richTextBox_ClientRx = new System.Windows.Forms.RichTextBox();
             this.checkBox_TCPClientRxHex = new System.Windows.Forms.CheckBox();
             this.button_ClearRx = new System.Windows.Forms.Button();
@@ -561,6 +521,47 @@ namespace Monitor
             this.checkBox_RecordMiniAda = new System.Windows.Forms.CheckBox();
             this.checkBox_PauseMiniAda = new System.Windows.Forms.CheckBox();
             this.button_ClearMiniAda = new System.Windows.Forms.Button();
+            this.tabPage_SerialPort = new System.Windows.Forms.TabPage();
+            this.button_OpenPort = new System.Windows.Forms.Button();
+            this.groupBox_SendSerialOrMonitorCommands = new System.Windows.Forms.GroupBox();
+            this.textBox_SendSerialPortPeriod = new System.Windows.Forms.TextBox();
+            this.checkBox_SendEveryOneSecond = new System.Windows.Forms.CheckBox();
+            this.checkBox_SendHexdata = new System.Windows.Forms.CheckBox();
+            this.textBox_SendSerialPort = new System.Windows.Forms.TextBox();
+            this.checkBox_DeleteCommand = new System.Windows.Forms.CheckBox();
+            this.button_SendSerialPort = new System.Windows.Forms.Button();
+            this.gbPortSettings = new System.Windows.Forms.GroupBox();
+            this.cmb_StopBits = new System.Windows.Forms.ComboBox();
+            this.cmbParity = new System.Windows.Forms.ComboBox();
+            this.cmb_PortName = new System.Windows.Forms.ComboBox();
+            this.button_ReScanComPort = new System.Windows.Forms.Button();
+            this.cmbBaudRate = new System.Windows.Forms.ComboBox();
+            this.cmbDataBits = new System.Windows.Forms.ComboBox();
+            this.lblComPort = new System.Windows.Forms.Label();
+            this.lblStopBits = new System.Windows.Forms.Label();
+            this.lblBaudRate = new System.Windows.Forms.Label();
+            this.lblDataBits = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox_WriteFrameInformation = new System.Windows.Forms.CheckBox();
+            this.groupBox_Timer = new System.Windows.Forms.GroupBox();
+            this.textBox_TimerTime = new System.Windows.Forms.TextBox();
+            this.button_StartStopTimer = new System.Windows.Forms.Button();
+            this.button_ResetTimer = new System.Windows.Forms.Button();
+            this.textBox_SetTimerTime = new System.Windows.Forms.TextBox();
+            this.groupBox_Stopwatch = new System.Windows.Forms.GroupBox();
+            this.button_TimerLog = new System.Windows.Forms.Button();
+            this.button_Stopwatch_Start_Stop = new System.Windows.Forms.Button();
+            this.button_StopwatchReset = new System.Windows.Forms.Button();
+            this.textBox_StopWatch = new System.Windows.Forms.TextBox();
+            this.checkBox_RxHex = new System.Windows.Forms.CheckBox();
+            this.textBox_SerialPortRecognizePattern3 = new System.Windows.Forms.TextBox();
+            this.textBox_SerialPortRecognizePattern2 = new System.Windows.Forms.TextBox();
+            this.textBox_SerialPortRecognizePattern = new System.Windows.Forms.TextBox();
+            this.checkBox_SerialPortRecordLog = new System.Windows.Forms.CheckBox();
+            this.checkBox_SerialPortPause = new System.Windows.Forms.CheckBox();
+            this.button_ClearSerialPort = new System.Windows.Forms.Button();
+            this.SerialPortLogger_TextBox = new System.Windows.Forms.RichTextBox();
             this.button_OpenFolder = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.S1_Configuration = new System.Windows.Forms.GroupBox();
@@ -747,7 +748,6 @@ namespace Monitor
             this.saveFileDialog_Local = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog_Local = new System.Windows.Forms.OpenFileDialog();
             this.checkBox_Openall = new System.Windows.Forms.CheckBox();
-            this.checkBox_RecordToFileTCPClient = new System.Windows.Forms.CheckBox();
             this.groupBox_ServerSettings.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl_Main.SuspendLayout();
@@ -755,12 +755,6 @@ namespace Monitor
             this.groupBox3.SuspendLayout();
             this.tabPage_charts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.tabPage_SerialPort.SuspendLayout();
-            this.groupBox_SendSerialOrMonitorCommands.SuspendLayout();
-            this.gbPortSettings.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox_Timer.SuspendLayout();
-            this.groupBox_Stopwatch.SuspendLayout();
             this.tabPage_ClientTCP.SuspendLayout();
             this.groupBox33.SuspendLayout();
             this.groupBox31.SuspendLayout();
@@ -773,6 +767,12 @@ namespace Monitor
             this.groupBox_CLISendCommand.SuspendLayout();
             this.tabPage2_Script.SuspendLayout();
             this.groupBox32.SuspendLayout();
+            this.tabPage_SerialPort.SuspendLayout();
+            this.groupBox_SendSerialOrMonitorCommands.SuspendLayout();
+            this.gbPortSettings.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox_Timer.SuspendLayout();
+            this.groupBox_Stopwatch.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.S1_Configuration.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -1300,17 +1300,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea8.AxisX.Title = "Freq";
-            chartArea8.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.AxisY.Title = "Power [dBm]";
-            chartArea8.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea8.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea8);
-            legend8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend8.IsTextAutoFit = false;
-            legend8.Name = "Legend1";
-            legend8.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend8);
+            chartArea1.AxisX.Title = "Freq";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.Title = "Power [dBm]";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            legend1.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -1320,519 +1320,6 @@ namespace Monitor
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Chart1_MouseClick);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Chart1_MouseMove);
-            // 
-            // tabPage_SerialPort
-            // 
-            this.tabPage_SerialPort.Controls.Add(this.button_OpenPort);
-            this.tabPage_SerialPort.Controls.Add(this.groupBox_SendSerialOrMonitorCommands);
-            this.tabPage_SerialPort.Controls.Add(this.gbPortSettings);
-            this.tabPage_SerialPort.Controls.Add(this.groupBox5);
-            this.tabPage_SerialPort.Location = new System.Drawing.Point(4, 27);
-            this.tabPage_SerialPort.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage_SerialPort.Name = "tabPage_SerialPort";
-            this.tabPage_SerialPort.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage_SerialPort.Size = new System.Drawing.Size(1414, 648);
-            this.tabPage_SerialPort.TabIndex = 1;
-            this.tabPage_SerialPort.Text = "Serial Port";
-            this.tabPage_SerialPort.UseVisualStyleBackColor = true;
-            // 
-            // button_OpenPort
-            // 
-            this.button_OpenPort.Location = new System.Drawing.Point(1321, 25);
-            this.button_OpenPort.Margin = new System.Windows.Forms.Padding(2);
-            this.button_OpenPort.Name = "button_OpenPort";
-            this.button_OpenPort.Size = new System.Drawing.Size(83, 71);
-            this.button_OpenPort.TabIndex = 11;
-            this.button_OpenPort.Text = "Open ";
-            this.button_OpenPort.UseVisualStyleBackColor = true;
-            this.button_OpenPort.Click += new System.EventHandler(this.Button_OpenPort_Click);
-            // 
-            // groupBox_SendSerialOrMonitorCommands
-            // 
-            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.textBox_SendSerialPortPeriod);
-            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.checkBox_SendEveryOneSecond);
-            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.checkBox_SendHexdata);
-            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.textBox_SendSerialPort);
-            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.checkBox_DeleteCommand);
-            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.button_SendSerialPort);
-            this.groupBox_SendSerialOrMonitorCommands.Location = new System.Drawing.Point(4, 6);
-            this.groupBox_SendSerialOrMonitorCommands.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox_SendSerialOrMonitorCommands.Name = "groupBox_SendSerialOrMonitorCommands";
-            this.groupBox_SendSerialOrMonitorCommands.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox_SendSerialOrMonitorCommands.Size = new System.Drawing.Size(841, 90);
-            this.groupBox_SendSerialOrMonitorCommands.TabIndex = 69;
-            this.groupBox_SendSerialOrMonitorCommands.TabStop = false;
-            this.groupBox_SendSerialOrMonitorCommands.Text = "Send Data to Serial Port";
-            // 
-            // textBox_SendSerialPortPeriod
-            // 
-            this.textBox_SendSerialPortPeriod.Location = new System.Drawing.Point(378, 55);
-            this.textBox_SendSerialPortPeriod.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_SendSerialPortPeriod.Name = "textBox_SendSerialPortPeriod";
-            this.textBox_SendSerialPortPeriod.Size = new System.Drawing.Size(46, 26);
-            this.textBox_SendSerialPortPeriod.TabIndex = 108;
-            this.textBox_SendSerialPortPeriod.Text = "10";
-            this.textBox_SendSerialPortPeriod.TextChanged += new System.EventHandler(this.textBox_SendSerialPortPeriod_TextChanged);
-            // 
-            // checkBox_SendEveryOneSecond
-            // 
-            this.checkBox_SendEveryOneSecond.AutoSize = true;
-            this.checkBox_SendEveryOneSecond.Location = new System.Drawing.Point(439, 57);
-            this.checkBox_SendEveryOneSecond.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox_SendEveryOneSecond.Name = "checkBox_SendEveryOneSecond";
-            this.checkBox_SendEveryOneSecond.Size = new System.Drawing.Size(189, 22);
-            this.checkBox_SendEveryOneSecond.TabIndex = 6;
-            this.checkBox_SendEveryOneSecond.Text = "Send Periodically (100 ms)";
-            this.checkBox_SendEveryOneSecond.UseVisualStyleBackColor = true;
-            this.checkBox_SendEveryOneSecond.CheckedChanged += new System.EventHandler(this.checkBox_SendEveryOneSecond_CheckedChanged);
-            // 
-            // checkBox_SendHexdata
-            // 
-            this.checkBox_SendHexdata.AutoSize = true;
-            this.checkBox_SendHexdata.Checked = true;
-            this.checkBox_SendHexdata.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_SendHexdata.Location = new System.Drawing.Point(252, 58);
-            this.checkBox_SendHexdata.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox_SendHexdata.Name = "checkBox_SendHexdata";
-            this.checkBox_SendHexdata.Size = new System.Drawing.Size(115, 22);
-            this.checkBox_SendHexdata.TabIndex = 5;
-            this.checkBox_SendHexdata.Text = "Send Hex data";
-            this.checkBox_SendHexdata.UseVisualStyleBackColor = true;
-            this.checkBox_SendHexdata.CheckedChanged += new System.EventHandler(this.CheckBox_SendHexdata_CheckedChanged);
-            // 
-            // textBox_SendSerialPort
-            // 
-            this.textBox_SendSerialPort.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox_SendSerialPort.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox_SendSerialPort.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_SendSerialPort.Location = new System.Drawing.Point(8, 20);
-            this.textBox_SendSerialPort.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_SendSerialPort.Name = "textBox_SendSerialPort";
-            this.textBox_SendSerialPort.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_SendSerialPort.Size = new System.Drawing.Size(829, 31);
-            this.textBox_SendSerialPort.TabIndex = 0;
-            this.textBox_SendSerialPort.TextChanged += new System.EventHandler(this.TextBox_SendSerialPort_TextChanged_1);
-            this.textBox_SendSerialPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_SendSerialPort_KeyDown);
-            this.textBox_SendSerialPort.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.TextBox_SendSerialPort_PreviewKeyDown);
-            // 
-            // checkBox_DeleteCommand
-            // 
-            this.checkBox_DeleteCommand.AutoSize = true;
-            this.checkBox_DeleteCommand.Location = new System.Drawing.Point(115, 59);
-            this.checkBox_DeleteCommand.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox_DeleteCommand.Name = "checkBox_DeleteCommand";
-            this.checkBox_DeleteCommand.Size = new System.Drawing.Size(135, 22);
-            this.checkBox_DeleteCommand.TabIndex = 4;
-            this.checkBox_DeleteCommand.Text = "Delete after Send";
-            this.checkBox_DeleteCommand.UseVisualStyleBackColor = true;
-            // 
-            // button_SendSerialPort
-            // 
-            this.button_SendSerialPort.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_SendSerialPort.Location = new System.Drawing.Point(8, 56);
-            this.button_SendSerialPort.Margin = new System.Windows.Forms.Padding(2);
-            this.button_SendSerialPort.Name = "button_SendSerialPort";
-            this.button_SendSerialPort.Size = new System.Drawing.Size(96, 23);
-            this.button_SendSerialPort.TabIndex = 1;
-            this.button_SendSerialPort.Text = "Send";
-            this.button_SendSerialPort.Click += new System.EventHandler(this.button_SendSerialPort_Click);
-            // 
-            // gbPortSettings
-            // 
-            this.gbPortSettings.Controls.Add(this.cmb_StopBits);
-            this.gbPortSettings.Controls.Add(this.cmbParity);
-            this.gbPortSettings.Controls.Add(this.cmb_PortName);
-            this.gbPortSettings.Controls.Add(this.button_ReScanComPort);
-            this.gbPortSettings.Controls.Add(this.cmbBaudRate);
-            this.gbPortSettings.Controls.Add(this.cmbDataBits);
-            this.gbPortSettings.Controls.Add(this.lblComPort);
-            this.gbPortSettings.Controls.Add(this.lblStopBits);
-            this.gbPortSettings.Controls.Add(this.lblBaudRate);
-            this.gbPortSettings.Controls.Add(this.lblDataBits);
-            this.gbPortSettings.Controls.Add(this.label3);
-            this.gbPortSettings.Location = new System.Drawing.Point(852, 13);
-            this.gbPortSettings.Margin = new System.Windows.Forms.Padding(2);
-            this.gbPortSettings.Name = "gbPortSettings";
-            this.gbPortSettings.Padding = new System.Windows.Forms.Padding(2);
-            this.gbPortSettings.Size = new System.Drawing.Size(465, 83);
-            this.gbPortSettings.TabIndex = 10;
-            this.gbPortSettings.TabStop = false;
-            this.gbPortSettings.Text = "COM Serial Port Settings";
-            // 
-            // cmb_StopBits
-            // 
-            this.cmb_StopBits.FormattingEnabled = true;
-            this.cmb_StopBits.Location = new System.Drawing.Point(305, 35);
-            this.cmb_StopBits.Name = "cmb_StopBits";
-            this.cmb_StopBits.Size = new System.Drawing.Size(68, 26);
-            this.cmb_StopBits.TabIndex = 13;
-            this.cmb_StopBits.Text = "1";
-            // 
-            // cmbParity
-            // 
-            this.cmbParity.FormattingEnabled = true;
-            this.cmbParity.Location = new System.Drawing.Point(168, 35);
-            this.cmbParity.Name = "cmbParity";
-            this.cmbParity.Size = new System.Drawing.Size(59, 26);
-            this.cmbParity.TabIndex = 12;
-            this.cmbParity.Text = "Even";
-            // 
-            // cmb_PortName
-            // 
-            this.cmb_PortName.FormattingEnabled = true;
-            this.cmb_PortName.Location = new System.Drawing.Point(11, 37);
-            this.cmb_PortName.Name = "cmb_PortName";
-            this.cmb_PortName.Size = new System.Drawing.Size(59, 26);
-            this.cmb_PortName.TabIndex = 11;
-            // 
-            // button_ReScanComPort
-            // 
-            this.button_ReScanComPort.AutoSize = true;
-            this.button_ReScanComPort.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_ReScanComPort.Location = new System.Drawing.Point(378, 33);
-            this.button_ReScanComPort.Margin = new System.Windows.Forms.Padding(2);
-            this.button_ReScanComPort.Name = "button_ReScanComPort";
-            this.button_ReScanComPort.Size = new System.Drawing.Size(80, 33);
-            this.button_ReScanComPort.TabIndex = 10;
-            this.button_ReScanComPort.Text = "ReScan";
-            this.button_ReScanComPort.UseVisualStyleBackColor = true;
-            this.button_ReScanComPort.Click += new System.EventHandler(this.Button_ReScanComPort_Click);
-            // 
-            // cmbBaudRate
-            // 
-            this.cmbBaudRate.FormattingEnabled = true;
-            this.cmbBaudRate.Items.AddRange(new object[] {
-            "1200",
-            "2400",
-            "4800",
-            "9600",
-            "19200",
-            "38400",
-            "57600",
-            "115200"});
-            this.cmbBaudRate.Location = new System.Drawing.Point(81, 35);
-            this.cmbBaudRate.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbBaudRate.Name = "cmbBaudRate";
-            this.cmbBaudRate.Size = new System.Drawing.Size(82, 26);
-            this.cmbBaudRate.TabIndex = 3;
-            this.cmbBaudRate.Text = "115200";
-            this.cmbBaudRate.SelectedIndexChanged += new System.EventHandler(this.CmbBaudRate_SelectedIndexChanged);
-            // 
-            // cmbDataBits
-            // 
-            this.cmbDataBits.FormattingEnabled = true;
-            this.cmbDataBits.Items.AddRange(new object[] {
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.cmbDataBits.Location = new System.Drawing.Point(232, 37);
-            this.cmbDataBits.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbDataBits.Name = "cmbDataBits";
-            this.cmbDataBits.Size = new System.Drawing.Size(56, 26);
-            this.cmbDataBits.TabIndex = 7;
-            this.cmbDataBits.Text = "8";
-            // 
-            // lblComPort
-            // 
-            this.lblComPort.AutoSize = true;
-            this.lblComPort.Location = new System.Drawing.Point(8, 18);
-            this.lblComPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblComPort.Name = "lblComPort";
-            this.lblComPort.Size = new System.Drawing.Size(71, 18);
-            this.lblComPort.TabIndex = 0;
-            this.lblComPort.Text = "COM Port:";
-            // 
-            // lblStopBits
-            // 
-            this.lblStopBits.AutoSize = true;
-            this.lblStopBits.Location = new System.Drawing.Point(302, 18);
-            this.lblStopBits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblStopBits.Name = "lblStopBits";
-            this.lblStopBits.Size = new System.Drawing.Size(66, 18);
-            this.lblStopBits.TabIndex = 8;
-            this.lblStopBits.Text = "Stop Bits:";
-            // 
-            // lblBaudRate
-            // 
-            this.lblBaudRate.AutoSize = true;
-            this.lblBaudRate.Location = new System.Drawing.Point(80, 20);
-            this.lblBaudRate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBaudRate.Name = "lblBaudRate";
-            this.lblBaudRate.Size = new System.Drawing.Size(74, 18);
-            this.lblBaudRate.TabIndex = 2;
-            this.lblBaudRate.Text = "Baud Rate:";
-            // 
-            // lblDataBits
-            // 
-            this.lblDataBits.AutoSize = true;
-            this.lblDataBits.Location = new System.Drawing.Point(229, 19);
-            this.lblDataBits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDataBits.Name = "lblDataBits";
-            this.lblDataBits.Size = new System.Drawing.Size(66, 18);
-            this.lblDataBits.TabIndex = 6;
-            this.lblDataBits.Text = "Data Bits:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(175, 17);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 18);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Parity:";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.checkBox_WriteFrameInformation);
-            this.groupBox5.Controls.Add(this.groupBox_Timer);
-            this.groupBox5.Controls.Add(this.groupBox_Stopwatch);
-            this.groupBox5.Controls.Add(this.checkBox_RxHex);
-            this.groupBox5.Controls.Add(this.textBox_SerialPortRecognizePattern3);
-            this.groupBox5.Controls.Add(this.textBox_SerialPortRecognizePattern2);
-            this.groupBox5.Controls.Add(this.textBox_SerialPortRecognizePattern);
-            this.groupBox5.Controls.Add(this.checkBox_SerialPortRecordLog);
-            this.groupBox5.Controls.Add(this.checkBox_SerialPortPause);
-            this.groupBox5.Controls.Add(this.button_ClearSerialPort);
-            this.groupBox5.Controls.Add(this.SerialPortLogger_TextBox);
-            this.groupBox5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(4, 102);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(1405, 553);
-            this.groupBox5.TabIndex = 68;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Serial Port Console";
-            this.groupBox5.Enter += new System.EventHandler(this.GroupBox5_Enter);
-            // 
-            // checkBox_WriteFrameInformation
-            // 
-            this.checkBox_WriteFrameInformation.AutoSize = true;
-            this.checkBox_WriteFrameInformation.Location = new System.Drawing.Point(710, 18);
-            this.checkBox_WriteFrameInformation.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox_WriteFrameInformation.Name = "checkBox_WriteFrameInformation";
-            this.checkBox_WriteFrameInformation.Size = new System.Drawing.Size(135, 23);
-            this.checkBox_WriteFrameInformation.TabIndex = 108;
-            this.checkBox_WriteFrameInformation.Text = "Write frame info";
-            this.checkBox_WriteFrameInformation.UseVisualStyleBackColor = true;
-            this.checkBox_WriteFrameInformation.CheckedChanged += new System.EventHandler(this.checkBox_WriteTotalbytes_CheckedChanged);
-            // 
-            // groupBox_Timer
-            // 
-            this.groupBox_Timer.Controls.Add(this.textBox_TimerTime);
-            this.groupBox_Timer.Controls.Add(this.button_StartStopTimer);
-            this.groupBox_Timer.Controls.Add(this.button_ResetTimer);
-            this.groupBox_Timer.Controls.Add(this.textBox_SetTimerTime);
-            this.groupBox_Timer.Location = new System.Drawing.Point(38, 704);
-            this.groupBox_Timer.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox_Timer.Name = "groupBox_Timer";
-            this.groupBox_Timer.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox_Timer.Size = new System.Drawing.Size(246, 107);
-            this.groupBox_Timer.TabIndex = 107;
-            this.groupBox_Timer.TabStop = false;
-            this.groupBox_Timer.Text = "Timer";
-            this.groupBox_Timer.Visible = false;
-            // 
-            // textBox_TimerTime
-            // 
-            this.textBox_TimerTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_TimerTime.Location = new System.Drawing.Point(109, 64);
-            this.textBox_TimerTime.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_TimerTime.Name = "textBox_TimerTime";
-            this.textBox_TimerTime.ReadOnly = true;
-            this.textBox_TimerTime.Size = new System.Drawing.Size(65, 31);
-            this.textBox_TimerTime.TabIndex = 106;
-            this.textBox_TimerTime.Text = "0";
-            // 
-            // button_StartStopTimer
-            // 
-            this.button_StartStopTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_StartStopTimer.Location = new System.Drawing.Point(8, 22);
-            this.button_StartStopTimer.Margin = new System.Windows.Forms.Padding(2);
-            this.button_StartStopTimer.Name = "button_StartStopTimer";
-            this.button_StartStopTimer.Size = new System.Drawing.Size(101, 36);
-            this.button_StartStopTimer.TabIndex = 104;
-            this.button_StartStopTimer.Text = "Start/Stop";
-            this.button_StartStopTimer.UseVisualStyleBackColor = true;
-            this.button_StartStopTimer.Click += new System.EventHandler(this.Button_StartStopTimer_Click);
-            // 
-            // button_ResetTimer
-            // 
-            this.button_ResetTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_ResetTimer.Location = new System.Drawing.Point(109, 22);
-            this.button_ResetTimer.Margin = new System.Windows.Forms.Padding(2);
-            this.button_ResetTimer.Name = "button_ResetTimer";
-            this.button_ResetTimer.Size = new System.Drawing.Size(101, 36);
-            this.button_ResetTimer.TabIndex = 105;
-            this.button_ResetTimer.Text = "Reset (0)";
-            this.button_ResetTimer.UseVisualStyleBackColor = true;
-            this.button_ResetTimer.Click += new System.EventHandler(this.Button_ResetTimer_Click);
-            // 
-            // textBox_SetTimerTime
-            // 
-            this.textBox_SetTimerTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_SetTimerTime.Location = new System.Drawing.Point(8, 64);
-            this.textBox_SetTimerTime.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_SetTimerTime.Name = "textBox_SetTimerTime";
-            this.textBox_SetTimerTime.Size = new System.Drawing.Size(96, 31);
-            this.textBox_SetTimerTime.TabIndex = 103;
-            this.textBox_SetTimerTime.Text = "0";
-            // 
-            // groupBox_Stopwatch
-            // 
-            this.groupBox_Stopwatch.Controls.Add(this.button_TimerLog);
-            this.groupBox_Stopwatch.Controls.Add(this.button_Stopwatch_Start_Stop);
-            this.groupBox_Stopwatch.Controls.Add(this.button_StopwatchReset);
-            this.groupBox_Stopwatch.Controls.Add(this.textBox_StopWatch);
-            this.groupBox_Stopwatch.Location = new System.Drawing.Point(38, 590);
-            this.groupBox_Stopwatch.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox_Stopwatch.Name = "groupBox_Stopwatch";
-            this.groupBox_Stopwatch.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox_Stopwatch.Size = new System.Drawing.Size(246, 108);
-            this.groupBox_Stopwatch.TabIndex = 106;
-            this.groupBox_Stopwatch.TabStop = false;
-            this.groupBox_Stopwatch.Text = "Stopwatch";
-            this.groupBox_Stopwatch.Visible = false;
-            // 
-            // button_TimerLog
-            // 
-            this.button_TimerLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_TimerLog.Location = new System.Drawing.Point(173, 22);
-            this.button_TimerLog.Margin = new System.Windows.Forms.Padding(2);
-            this.button_TimerLog.Name = "button_TimerLog";
-            this.button_TimerLog.Size = new System.Drawing.Size(69, 36);
-            this.button_TimerLog.TabIndex = 106;
-            this.button_TimerLog.Text = "Log ->";
-            this.button_TimerLog.UseVisualStyleBackColor = true;
-            this.button_TimerLog.Click += new System.EventHandler(this.Button_TimerLog_Click);
-            // 
-            // button_Stopwatch_Start_Stop
-            // 
-            this.button_Stopwatch_Start_Stop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Stopwatch_Start_Stop.Location = new System.Drawing.Point(8, 22);
-            this.button_Stopwatch_Start_Stop.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Stopwatch_Start_Stop.Name = "button_Stopwatch_Start_Stop";
-            this.button_Stopwatch_Start_Stop.Size = new System.Drawing.Size(101, 36);
-            this.button_Stopwatch_Start_Stop.TabIndex = 104;
-            this.button_Stopwatch_Start_Stop.Text = "Start/Stop";
-            this.button_Stopwatch_Start_Stop.UseVisualStyleBackColor = true;
-            this.button_Stopwatch_Start_Stop.Click += new System.EventHandler(this.Button_Stopwatch_Start_Stop_Click);
-            // 
-            // button_StopwatchReset
-            // 
-            this.button_StopwatchReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_StopwatchReset.Location = new System.Drawing.Point(109, 22);
-            this.button_StopwatchReset.Margin = new System.Windows.Forms.Padding(2);
-            this.button_StopwatchReset.Name = "button_StopwatchReset";
-            this.button_StopwatchReset.Size = new System.Drawing.Size(64, 36);
-            this.button_StopwatchReset.TabIndex = 105;
-            this.button_StopwatchReset.Text = "Reset";
-            this.button_StopwatchReset.UseVisualStyleBackColor = true;
-            this.button_StopwatchReset.Click += new System.EventHandler(this.Button_StopwatchReset_Click);
-            // 
-            // textBox_StopWatch
-            // 
-            this.textBox_StopWatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_StopWatch.Location = new System.Drawing.Point(8, 64);
-            this.textBox_StopWatch.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_StopWatch.Name = "textBox_StopWatch";
-            this.textBox_StopWatch.ReadOnly = true;
-            this.textBox_StopWatch.Size = new System.Drawing.Size(184, 31);
-            this.textBox_StopWatch.TabIndex = 103;
-            this.textBox_StopWatch.Text = "0";
-            this.textBox_StopWatch.TextChanged += new System.EventHandler(this.TextBox_StopWatch_TextChanged);
-            // 
-            // checkBox_RxHex
-            // 
-            this.checkBox_RxHex.AutoSize = true;
-            this.checkBox_RxHex.Checked = true;
-            this.checkBox_RxHex.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_RxHex.Location = new System.Drawing.Point(595, 19);
-            this.checkBox_RxHex.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox_RxHex.Name = "checkBox_RxHex";
-            this.checkBox_RxHex.Size = new System.Drawing.Size(111, 23);
-            this.checkBox_RxHex.TabIndex = 6;
-            this.checkBox_RxHex.Text = "Show Rx Hex";
-            this.checkBox_RxHex.UseVisualStyleBackColor = true;
-            // 
-            // textBox_SerialPortRecognizePattern3
-            // 
-            this.textBox_SerialPortRecognizePattern3.Location = new System.Drawing.Point(232, 15);
-            this.textBox_SerialPortRecognizePattern3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_SerialPortRecognizePattern3.Name = "textBox_SerialPortRecognizePattern3";
-            this.textBox_SerialPortRecognizePattern3.Size = new System.Drawing.Size(108, 27);
-            this.textBox_SerialPortRecognizePattern3.TabIndex = 75;
-            // 
-            // textBox_SerialPortRecognizePattern2
-            // 
-            this.textBox_SerialPortRecognizePattern2.Location = new System.Drawing.Point(120, 16);
-            this.textBox_SerialPortRecognizePattern2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_SerialPortRecognizePattern2.Name = "textBox_SerialPortRecognizePattern2";
-            this.textBox_SerialPortRecognizePattern2.Size = new System.Drawing.Size(108, 27);
-            this.textBox_SerialPortRecognizePattern2.TabIndex = 74;
-            // 
-            // textBox_SerialPortRecognizePattern
-            // 
-            this.textBox_SerialPortRecognizePattern.Location = new System.Drawing.Point(8, 16);
-            this.textBox_SerialPortRecognizePattern.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_SerialPortRecognizePattern.Name = "textBox_SerialPortRecognizePattern";
-            this.textBox_SerialPortRecognizePattern.Size = new System.Drawing.Size(108, 27);
-            this.textBox_SerialPortRecognizePattern.TabIndex = 73;
-            // 
-            // checkBox_SerialPortRecordLog
-            // 
-            this.checkBox_SerialPortRecordLog.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_SerialPortRecordLog.AutoSize = true;
-            this.checkBox_SerialPortRecordLog.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_SerialPortRecordLog.Location = new System.Drawing.Point(345, 14);
-            this.checkBox_SerialPortRecordLog.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox_SerialPortRecordLog.Name = "checkBox_SerialPortRecordLog";
-            this.checkBox_SerialPortRecordLog.Size = new System.Drawing.Size(83, 29);
-            this.checkBox_SerialPortRecordLog.TabIndex = 69;
-            this.checkBox_SerialPortRecordLog.Text = "Log to file";
-            this.checkBox_SerialPortRecordLog.UseVisualStyleBackColor = true;
-            this.checkBox_SerialPortRecordLog.CheckedChanged += new System.EventHandler(this.CheckBox_S1RecordLog_CheckedChanged);
-            // 
-            // checkBox_SerialPortPause
-            // 
-            this.checkBox_SerialPortPause.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_SerialPortPause.AutoSize = true;
-            this.checkBox_SerialPortPause.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_SerialPortPause.Location = new System.Drawing.Point(443, 13);
-            this.checkBox_SerialPortPause.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox_SerialPortPause.Name = "checkBox_SerialPortPause";
-            this.checkBox_SerialPortPause.Size = new System.Drawing.Size(58, 29);
-            this.checkBox_SerialPortPause.TabIndex = 70;
-            this.checkBox_SerialPortPause.Text = "Pause";
-            this.checkBox_SerialPortPause.UseVisualStyleBackColor = true;
-            this.checkBox_SerialPortPause.CheckedChanged += new System.EventHandler(this.CheckBox_S1Pause_CheckedChanged);
-            // 
-            // button_ClearSerialPort
-            // 
-            this.button_ClearSerialPort.Font = new System.Drawing.Font("Calibri", 12F);
-            this.button_ClearSerialPort.Location = new System.Drawing.Point(514, 13);
-            this.button_ClearSerialPort.Margin = new System.Windows.Forms.Padding(2);
-            this.button_ClearSerialPort.Name = "button_ClearSerialPort";
-            this.button_ClearSerialPort.Size = new System.Drawing.Size(62, 29);
-            this.button_ClearSerialPort.TabIndex = 69;
-            this.button_ClearSerialPort.Text = "Clear";
-            this.button_ClearSerialPort.UseVisualStyleBackColor = true;
-            this.button_ClearSerialPort.Click += new System.EventHandler(this.txtS1_Clear_Click);
-            // 
-            // SerialPortLogger_TextBox
-            // 
-            this.SerialPortLogger_TextBox.BackColor = System.Drawing.Color.LightGray;
-            this.SerialPortLogger_TextBox.EnableAutoDragDrop = true;
-            this.SerialPortLogger_TextBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SerialPortLogger_TextBox.Location = new System.Drawing.Point(4, 47);
-            this.SerialPortLogger_TextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.SerialPortLogger_TextBox.Name = "SerialPortLogger_TextBox";
-            this.SerialPortLogger_TextBox.Size = new System.Drawing.Size(1397, 502);
-            this.SerialPortLogger_TextBox.TabIndex = 0;
-            this.SerialPortLogger_TextBox.Text = "";
-            this.SerialPortLogger_TextBox.TextChanged += new System.EventHandler(this.SerialPortLogger_TextBox_TextChanged);
             // 
             // tabPage_ClientTCP
             // 
@@ -1871,11 +1358,13 @@ namespace Monitor
             this.richTextBox_ClientTx.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_ClientTx.Location = new System.Drawing.Point(7, 14);
             this.richTextBox_ClientTx.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox_ClientTx.Multiline = false;
             this.richTextBox_ClientTx.Name = "richTextBox_ClientTx";
             this.richTextBox_ClientTx.Size = new System.Drawing.Size(1294, 37);
             this.richTextBox_ClientTx.TabIndex = 4;
             this.richTextBox_ClientTx.Text = "";
             this.richTextBox_ClientTx.TextChanged += new System.EventHandler(this.richTextBox_ClientTx_TextChanged);
+            this.richTextBox_ClientTx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox_ClientTx_KeyDown);
             // 
             // button_TCPClientTxSend
             // 
@@ -1924,6 +1413,17 @@ namespace Monitor
             this.groupBox31.TabIndex = 18;
             this.groupBox31.TabStop = false;
             this.groupBox31.Text = "TCP/IP client logger";
+            // 
+            // checkBox_RecordToFileTCPClient
+            // 
+            this.checkBox_RecordToFileTCPClient.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_RecordToFileTCPClient.AutoSize = true;
+            this.checkBox_RecordToFileTCPClient.Location = new System.Drawing.Point(1225, 111);
+            this.checkBox_RecordToFileTCPClient.Name = "checkBox_RecordToFileTCPClient";
+            this.checkBox_RecordToFileTCPClient.Size = new System.Drawing.Size(100, 28);
+            this.checkBox_RecordToFileTCPClient.TabIndex = 18;
+            this.checkBox_RecordToFileTCPClient.Text = "Record to file";
+            this.checkBox_RecordToFileTCPClient.UseVisualStyleBackColor = true;
             // 
             // richTextBox_ClientRx
             // 
@@ -2442,6 +1942,519 @@ namespace Monitor
             this.button_ClearMiniAda.TabIndex = 6;
             this.button_ClearMiniAda.Text = "Clear";
             this.button_ClearMiniAda.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_SerialPort
+            // 
+            this.tabPage_SerialPort.Controls.Add(this.button_OpenPort);
+            this.tabPage_SerialPort.Controls.Add(this.groupBox_SendSerialOrMonitorCommands);
+            this.tabPage_SerialPort.Controls.Add(this.gbPortSettings);
+            this.tabPage_SerialPort.Controls.Add(this.groupBox5);
+            this.tabPage_SerialPort.Location = new System.Drawing.Point(4, 27);
+            this.tabPage_SerialPort.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage_SerialPort.Name = "tabPage_SerialPort";
+            this.tabPage_SerialPort.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage_SerialPort.Size = new System.Drawing.Size(1414, 648);
+            this.tabPage_SerialPort.TabIndex = 1;
+            this.tabPage_SerialPort.Text = "Serial Port";
+            this.tabPage_SerialPort.UseVisualStyleBackColor = true;
+            // 
+            // button_OpenPort
+            // 
+            this.button_OpenPort.Location = new System.Drawing.Point(1321, 25);
+            this.button_OpenPort.Margin = new System.Windows.Forms.Padding(2);
+            this.button_OpenPort.Name = "button_OpenPort";
+            this.button_OpenPort.Size = new System.Drawing.Size(83, 71);
+            this.button_OpenPort.TabIndex = 11;
+            this.button_OpenPort.Text = "Open ";
+            this.button_OpenPort.UseVisualStyleBackColor = true;
+            this.button_OpenPort.Click += new System.EventHandler(this.Button_OpenPort_Click);
+            // 
+            // groupBox_SendSerialOrMonitorCommands
+            // 
+            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.textBox_SendSerialPortPeriod);
+            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.checkBox_SendEveryOneSecond);
+            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.checkBox_SendHexdata);
+            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.textBox_SendSerialPort);
+            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.checkBox_DeleteCommand);
+            this.groupBox_SendSerialOrMonitorCommands.Controls.Add(this.button_SendSerialPort);
+            this.groupBox_SendSerialOrMonitorCommands.Location = new System.Drawing.Point(4, 6);
+            this.groupBox_SendSerialOrMonitorCommands.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox_SendSerialOrMonitorCommands.Name = "groupBox_SendSerialOrMonitorCommands";
+            this.groupBox_SendSerialOrMonitorCommands.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox_SendSerialOrMonitorCommands.Size = new System.Drawing.Size(841, 90);
+            this.groupBox_SendSerialOrMonitorCommands.TabIndex = 69;
+            this.groupBox_SendSerialOrMonitorCommands.TabStop = false;
+            this.groupBox_SendSerialOrMonitorCommands.Text = "Send Data to Serial Port";
+            // 
+            // textBox_SendSerialPortPeriod
+            // 
+            this.textBox_SendSerialPortPeriod.Location = new System.Drawing.Point(378, 55);
+            this.textBox_SendSerialPortPeriod.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_SendSerialPortPeriod.Name = "textBox_SendSerialPortPeriod";
+            this.textBox_SendSerialPortPeriod.Size = new System.Drawing.Size(46, 26);
+            this.textBox_SendSerialPortPeriod.TabIndex = 108;
+            this.textBox_SendSerialPortPeriod.Text = "10";
+            this.textBox_SendSerialPortPeriod.TextChanged += new System.EventHandler(this.textBox_SendSerialPortPeriod_TextChanged);
+            // 
+            // checkBox_SendEveryOneSecond
+            // 
+            this.checkBox_SendEveryOneSecond.AutoSize = true;
+            this.checkBox_SendEveryOneSecond.Location = new System.Drawing.Point(439, 57);
+            this.checkBox_SendEveryOneSecond.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox_SendEveryOneSecond.Name = "checkBox_SendEveryOneSecond";
+            this.checkBox_SendEveryOneSecond.Size = new System.Drawing.Size(189, 22);
+            this.checkBox_SendEveryOneSecond.TabIndex = 6;
+            this.checkBox_SendEveryOneSecond.Text = "Send Periodically (100 ms)";
+            this.checkBox_SendEveryOneSecond.UseVisualStyleBackColor = true;
+            this.checkBox_SendEveryOneSecond.CheckedChanged += new System.EventHandler(this.checkBox_SendEveryOneSecond_CheckedChanged);
+            // 
+            // checkBox_SendHexdata
+            // 
+            this.checkBox_SendHexdata.AutoSize = true;
+            this.checkBox_SendHexdata.Checked = true;
+            this.checkBox_SendHexdata.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_SendHexdata.Location = new System.Drawing.Point(252, 58);
+            this.checkBox_SendHexdata.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox_SendHexdata.Name = "checkBox_SendHexdata";
+            this.checkBox_SendHexdata.Size = new System.Drawing.Size(115, 22);
+            this.checkBox_SendHexdata.TabIndex = 5;
+            this.checkBox_SendHexdata.Text = "Send Hex data";
+            this.checkBox_SendHexdata.UseVisualStyleBackColor = true;
+            this.checkBox_SendHexdata.CheckedChanged += new System.EventHandler(this.CheckBox_SendHexdata_CheckedChanged);
+            // 
+            // textBox_SendSerialPort
+            // 
+            this.textBox_SendSerialPort.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox_SendSerialPort.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox_SendSerialPort.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_SendSerialPort.Location = new System.Drawing.Point(8, 20);
+            this.textBox_SendSerialPort.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_SendSerialPort.Name = "textBox_SendSerialPort";
+            this.textBox_SendSerialPort.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_SendSerialPort.Size = new System.Drawing.Size(829, 31);
+            this.textBox_SendSerialPort.TabIndex = 0;
+            this.textBox_SendSerialPort.TextChanged += new System.EventHandler(this.TextBox_SendSerialPort_TextChanged_1);
+            this.textBox_SendSerialPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_SendSerialPort_KeyDown);
+            this.textBox_SendSerialPort.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.TextBox_SendSerialPort_PreviewKeyDown);
+            // 
+            // checkBox_DeleteCommand
+            // 
+            this.checkBox_DeleteCommand.AutoSize = true;
+            this.checkBox_DeleteCommand.Location = new System.Drawing.Point(115, 59);
+            this.checkBox_DeleteCommand.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox_DeleteCommand.Name = "checkBox_DeleteCommand";
+            this.checkBox_DeleteCommand.Size = new System.Drawing.Size(135, 22);
+            this.checkBox_DeleteCommand.TabIndex = 4;
+            this.checkBox_DeleteCommand.Text = "Delete after Send";
+            this.checkBox_DeleteCommand.UseVisualStyleBackColor = true;
+            // 
+            // button_SendSerialPort
+            // 
+            this.button_SendSerialPort.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_SendSerialPort.Location = new System.Drawing.Point(8, 56);
+            this.button_SendSerialPort.Margin = new System.Windows.Forms.Padding(2);
+            this.button_SendSerialPort.Name = "button_SendSerialPort";
+            this.button_SendSerialPort.Size = new System.Drawing.Size(96, 23);
+            this.button_SendSerialPort.TabIndex = 1;
+            this.button_SendSerialPort.Text = "Send";
+            this.button_SendSerialPort.Click += new System.EventHandler(this.button_SendSerialPort_Click);
+            // 
+            // gbPortSettings
+            // 
+            this.gbPortSettings.Controls.Add(this.cmb_StopBits);
+            this.gbPortSettings.Controls.Add(this.cmbParity);
+            this.gbPortSettings.Controls.Add(this.cmb_PortName);
+            this.gbPortSettings.Controls.Add(this.button_ReScanComPort);
+            this.gbPortSettings.Controls.Add(this.cmbBaudRate);
+            this.gbPortSettings.Controls.Add(this.cmbDataBits);
+            this.gbPortSettings.Controls.Add(this.lblComPort);
+            this.gbPortSettings.Controls.Add(this.lblStopBits);
+            this.gbPortSettings.Controls.Add(this.lblBaudRate);
+            this.gbPortSettings.Controls.Add(this.lblDataBits);
+            this.gbPortSettings.Controls.Add(this.label3);
+            this.gbPortSettings.Location = new System.Drawing.Point(852, 13);
+            this.gbPortSettings.Margin = new System.Windows.Forms.Padding(2);
+            this.gbPortSettings.Name = "gbPortSettings";
+            this.gbPortSettings.Padding = new System.Windows.Forms.Padding(2);
+            this.gbPortSettings.Size = new System.Drawing.Size(465, 83);
+            this.gbPortSettings.TabIndex = 10;
+            this.gbPortSettings.TabStop = false;
+            this.gbPortSettings.Text = "COM Serial Port Settings";
+            // 
+            // cmb_StopBits
+            // 
+            this.cmb_StopBits.FormattingEnabled = true;
+            this.cmb_StopBits.Location = new System.Drawing.Point(305, 35);
+            this.cmb_StopBits.Name = "cmb_StopBits";
+            this.cmb_StopBits.Size = new System.Drawing.Size(68, 26);
+            this.cmb_StopBits.TabIndex = 13;
+            this.cmb_StopBits.Text = "1";
+            // 
+            // cmbParity
+            // 
+            this.cmbParity.FormattingEnabled = true;
+            this.cmbParity.Location = new System.Drawing.Point(168, 35);
+            this.cmbParity.Name = "cmbParity";
+            this.cmbParity.Size = new System.Drawing.Size(59, 26);
+            this.cmbParity.TabIndex = 12;
+            this.cmbParity.Text = "Even";
+            // 
+            // cmb_PortName
+            // 
+            this.cmb_PortName.FormattingEnabled = true;
+            this.cmb_PortName.Location = new System.Drawing.Point(11, 37);
+            this.cmb_PortName.Name = "cmb_PortName";
+            this.cmb_PortName.Size = new System.Drawing.Size(59, 26);
+            this.cmb_PortName.TabIndex = 11;
+            // 
+            // button_ReScanComPort
+            // 
+            this.button_ReScanComPort.AutoSize = true;
+            this.button_ReScanComPort.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ReScanComPort.Location = new System.Drawing.Point(378, 33);
+            this.button_ReScanComPort.Margin = new System.Windows.Forms.Padding(2);
+            this.button_ReScanComPort.Name = "button_ReScanComPort";
+            this.button_ReScanComPort.Size = new System.Drawing.Size(80, 33);
+            this.button_ReScanComPort.TabIndex = 10;
+            this.button_ReScanComPort.Text = "ReScan";
+            this.button_ReScanComPort.UseVisualStyleBackColor = true;
+            this.button_ReScanComPort.Click += new System.EventHandler(this.Button_ReScanComPort_Click);
+            // 
+            // cmbBaudRate
+            // 
+            this.cmbBaudRate.FormattingEnabled = true;
+            this.cmbBaudRate.Items.AddRange(new object[] {
+            "1200",
+            "2400",
+            "4800",
+            "9600",
+            "19200",
+            "38400",
+            "57600",
+            "115200"});
+            this.cmbBaudRate.Location = new System.Drawing.Point(81, 35);
+            this.cmbBaudRate.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbBaudRate.Name = "cmbBaudRate";
+            this.cmbBaudRate.Size = new System.Drawing.Size(82, 26);
+            this.cmbBaudRate.TabIndex = 3;
+            this.cmbBaudRate.Text = "115200";
+            this.cmbBaudRate.SelectedIndexChanged += new System.EventHandler(this.CmbBaudRate_SelectedIndexChanged);
+            // 
+            // cmbDataBits
+            // 
+            this.cmbDataBits.FormattingEnabled = true;
+            this.cmbDataBits.Items.AddRange(new object[] {
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.cmbDataBits.Location = new System.Drawing.Point(232, 37);
+            this.cmbDataBits.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDataBits.Name = "cmbDataBits";
+            this.cmbDataBits.Size = new System.Drawing.Size(56, 26);
+            this.cmbDataBits.TabIndex = 7;
+            this.cmbDataBits.Text = "8";
+            // 
+            // lblComPort
+            // 
+            this.lblComPort.AutoSize = true;
+            this.lblComPort.Location = new System.Drawing.Point(8, 18);
+            this.lblComPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblComPort.Name = "lblComPort";
+            this.lblComPort.Size = new System.Drawing.Size(71, 18);
+            this.lblComPort.TabIndex = 0;
+            this.lblComPort.Text = "COM Port:";
+            // 
+            // lblStopBits
+            // 
+            this.lblStopBits.AutoSize = true;
+            this.lblStopBits.Location = new System.Drawing.Point(302, 18);
+            this.lblStopBits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStopBits.Name = "lblStopBits";
+            this.lblStopBits.Size = new System.Drawing.Size(66, 18);
+            this.lblStopBits.TabIndex = 8;
+            this.lblStopBits.Text = "Stop Bits:";
+            // 
+            // lblBaudRate
+            // 
+            this.lblBaudRate.AutoSize = true;
+            this.lblBaudRate.Location = new System.Drawing.Point(80, 20);
+            this.lblBaudRate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBaudRate.Name = "lblBaudRate";
+            this.lblBaudRate.Size = new System.Drawing.Size(74, 18);
+            this.lblBaudRate.TabIndex = 2;
+            this.lblBaudRate.Text = "Baud Rate:";
+            // 
+            // lblDataBits
+            // 
+            this.lblDataBits.AutoSize = true;
+            this.lblDataBits.Location = new System.Drawing.Point(229, 19);
+            this.lblDataBits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDataBits.Name = "lblDataBits";
+            this.lblDataBits.Size = new System.Drawing.Size(66, 18);
+            this.lblDataBits.TabIndex = 6;
+            this.lblDataBits.Text = "Data Bits:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(175, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 18);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Parity:";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.checkBox_WriteFrameInformation);
+            this.groupBox5.Controls.Add(this.groupBox_Timer);
+            this.groupBox5.Controls.Add(this.groupBox_Stopwatch);
+            this.groupBox5.Controls.Add(this.checkBox_RxHex);
+            this.groupBox5.Controls.Add(this.textBox_SerialPortRecognizePattern3);
+            this.groupBox5.Controls.Add(this.textBox_SerialPortRecognizePattern2);
+            this.groupBox5.Controls.Add(this.textBox_SerialPortRecognizePattern);
+            this.groupBox5.Controls.Add(this.checkBox_SerialPortRecordLog);
+            this.groupBox5.Controls.Add(this.checkBox_SerialPortPause);
+            this.groupBox5.Controls.Add(this.button_ClearSerialPort);
+            this.groupBox5.Controls.Add(this.SerialPortLogger_TextBox);
+            this.groupBox5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(4, 102);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Size = new System.Drawing.Size(1405, 553);
+            this.groupBox5.TabIndex = 68;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Serial Port Console";
+            this.groupBox5.Enter += new System.EventHandler(this.GroupBox5_Enter);
+            // 
+            // checkBox_WriteFrameInformation
+            // 
+            this.checkBox_WriteFrameInformation.AutoSize = true;
+            this.checkBox_WriteFrameInformation.Location = new System.Drawing.Point(710, 18);
+            this.checkBox_WriteFrameInformation.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox_WriteFrameInformation.Name = "checkBox_WriteFrameInformation";
+            this.checkBox_WriteFrameInformation.Size = new System.Drawing.Size(135, 23);
+            this.checkBox_WriteFrameInformation.TabIndex = 108;
+            this.checkBox_WriteFrameInformation.Text = "Write frame info";
+            this.checkBox_WriteFrameInformation.UseVisualStyleBackColor = true;
+            this.checkBox_WriteFrameInformation.CheckedChanged += new System.EventHandler(this.checkBox_WriteTotalbytes_CheckedChanged);
+            // 
+            // groupBox_Timer
+            // 
+            this.groupBox_Timer.Controls.Add(this.textBox_TimerTime);
+            this.groupBox_Timer.Controls.Add(this.button_StartStopTimer);
+            this.groupBox_Timer.Controls.Add(this.button_ResetTimer);
+            this.groupBox_Timer.Controls.Add(this.textBox_SetTimerTime);
+            this.groupBox_Timer.Location = new System.Drawing.Point(38, 704);
+            this.groupBox_Timer.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox_Timer.Name = "groupBox_Timer";
+            this.groupBox_Timer.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox_Timer.Size = new System.Drawing.Size(246, 107);
+            this.groupBox_Timer.TabIndex = 107;
+            this.groupBox_Timer.TabStop = false;
+            this.groupBox_Timer.Text = "Timer";
+            this.groupBox_Timer.Visible = false;
+            // 
+            // textBox_TimerTime
+            // 
+            this.textBox_TimerTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_TimerTime.Location = new System.Drawing.Point(109, 64);
+            this.textBox_TimerTime.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_TimerTime.Name = "textBox_TimerTime";
+            this.textBox_TimerTime.ReadOnly = true;
+            this.textBox_TimerTime.Size = new System.Drawing.Size(65, 31);
+            this.textBox_TimerTime.TabIndex = 106;
+            this.textBox_TimerTime.Text = "0";
+            // 
+            // button_StartStopTimer
+            // 
+            this.button_StartStopTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_StartStopTimer.Location = new System.Drawing.Point(8, 22);
+            this.button_StartStopTimer.Margin = new System.Windows.Forms.Padding(2);
+            this.button_StartStopTimer.Name = "button_StartStopTimer";
+            this.button_StartStopTimer.Size = new System.Drawing.Size(101, 36);
+            this.button_StartStopTimer.TabIndex = 104;
+            this.button_StartStopTimer.Text = "Start/Stop";
+            this.button_StartStopTimer.UseVisualStyleBackColor = true;
+            this.button_StartStopTimer.Click += new System.EventHandler(this.Button_StartStopTimer_Click);
+            // 
+            // button_ResetTimer
+            // 
+            this.button_ResetTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_ResetTimer.Location = new System.Drawing.Point(109, 22);
+            this.button_ResetTimer.Margin = new System.Windows.Forms.Padding(2);
+            this.button_ResetTimer.Name = "button_ResetTimer";
+            this.button_ResetTimer.Size = new System.Drawing.Size(101, 36);
+            this.button_ResetTimer.TabIndex = 105;
+            this.button_ResetTimer.Text = "Reset (0)";
+            this.button_ResetTimer.UseVisualStyleBackColor = true;
+            this.button_ResetTimer.Click += new System.EventHandler(this.Button_ResetTimer_Click);
+            // 
+            // textBox_SetTimerTime
+            // 
+            this.textBox_SetTimerTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_SetTimerTime.Location = new System.Drawing.Point(8, 64);
+            this.textBox_SetTimerTime.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_SetTimerTime.Name = "textBox_SetTimerTime";
+            this.textBox_SetTimerTime.Size = new System.Drawing.Size(96, 31);
+            this.textBox_SetTimerTime.TabIndex = 103;
+            this.textBox_SetTimerTime.Text = "0";
+            // 
+            // groupBox_Stopwatch
+            // 
+            this.groupBox_Stopwatch.Controls.Add(this.button_TimerLog);
+            this.groupBox_Stopwatch.Controls.Add(this.button_Stopwatch_Start_Stop);
+            this.groupBox_Stopwatch.Controls.Add(this.button_StopwatchReset);
+            this.groupBox_Stopwatch.Controls.Add(this.textBox_StopWatch);
+            this.groupBox_Stopwatch.Location = new System.Drawing.Point(38, 590);
+            this.groupBox_Stopwatch.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox_Stopwatch.Name = "groupBox_Stopwatch";
+            this.groupBox_Stopwatch.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox_Stopwatch.Size = new System.Drawing.Size(246, 108);
+            this.groupBox_Stopwatch.TabIndex = 106;
+            this.groupBox_Stopwatch.TabStop = false;
+            this.groupBox_Stopwatch.Text = "Stopwatch";
+            this.groupBox_Stopwatch.Visible = false;
+            // 
+            // button_TimerLog
+            // 
+            this.button_TimerLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_TimerLog.Location = new System.Drawing.Point(173, 22);
+            this.button_TimerLog.Margin = new System.Windows.Forms.Padding(2);
+            this.button_TimerLog.Name = "button_TimerLog";
+            this.button_TimerLog.Size = new System.Drawing.Size(69, 36);
+            this.button_TimerLog.TabIndex = 106;
+            this.button_TimerLog.Text = "Log ->";
+            this.button_TimerLog.UseVisualStyleBackColor = true;
+            this.button_TimerLog.Click += new System.EventHandler(this.Button_TimerLog_Click);
+            // 
+            // button_Stopwatch_Start_Stop
+            // 
+            this.button_Stopwatch_Start_Stop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Stopwatch_Start_Stop.Location = new System.Drawing.Point(8, 22);
+            this.button_Stopwatch_Start_Stop.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Stopwatch_Start_Stop.Name = "button_Stopwatch_Start_Stop";
+            this.button_Stopwatch_Start_Stop.Size = new System.Drawing.Size(101, 36);
+            this.button_Stopwatch_Start_Stop.TabIndex = 104;
+            this.button_Stopwatch_Start_Stop.Text = "Start/Stop";
+            this.button_Stopwatch_Start_Stop.UseVisualStyleBackColor = true;
+            this.button_Stopwatch_Start_Stop.Click += new System.EventHandler(this.Button_Stopwatch_Start_Stop_Click);
+            // 
+            // button_StopwatchReset
+            // 
+            this.button_StopwatchReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_StopwatchReset.Location = new System.Drawing.Point(109, 22);
+            this.button_StopwatchReset.Margin = new System.Windows.Forms.Padding(2);
+            this.button_StopwatchReset.Name = "button_StopwatchReset";
+            this.button_StopwatchReset.Size = new System.Drawing.Size(64, 36);
+            this.button_StopwatchReset.TabIndex = 105;
+            this.button_StopwatchReset.Text = "Reset";
+            this.button_StopwatchReset.UseVisualStyleBackColor = true;
+            this.button_StopwatchReset.Click += new System.EventHandler(this.Button_StopwatchReset_Click);
+            // 
+            // textBox_StopWatch
+            // 
+            this.textBox_StopWatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_StopWatch.Location = new System.Drawing.Point(8, 64);
+            this.textBox_StopWatch.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_StopWatch.Name = "textBox_StopWatch";
+            this.textBox_StopWatch.ReadOnly = true;
+            this.textBox_StopWatch.Size = new System.Drawing.Size(184, 31);
+            this.textBox_StopWatch.TabIndex = 103;
+            this.textBox_StopWatch.Text = "0";
+            this.textBox_StopWatch.TextChanged += new System.EventHandler(this.TextBox_StopWatch_TextChanged);
+            // 
+            // checkBox_RxHex
+            // 
+            this.checkBox_RxHex.AutoSize = true;
+            this.checkBox_RxHex.Checked = true;
+            this.checkBox_RxHex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_RxHex.Location = new System.Drawing.Point(595, 19);
+            this.checkBox_RxHex.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox_RxHex.Name = "checkBox_RxHex";
+            this.checkBox_RxHex.Size = new System.Drawing.Size(111, 23);
+            this.checkBox_RxHex.TabIndex = 6;
+            this.checkBox_RxHex.Text = "Show Rx Hex";
+            this.checkBox_RxHex.UseVisualStyleBackColor = true;
+            // 
+            // textBox_SerialPortRecognizePattern3
+            // 
+            this.textBox_SerialPortRecognizePattern3.Location = new System.Drawing.Point(232, 15);
+            this.textBox_SerialPortRecognizePattern3.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_SerialPortRecognizePattern3.Name = "textBox_SerialPortRecognizePattern3";
+            this.textBox_SerialPortRecognizePattern3.Size = new System.Drawing.Size(108, 27);
+            this.textBox_SerialPortRecognizePattern3.TabIndex = 75;
+            // 
+            // textBox_SerialPortRecognizePattern2
+            // 
+            this.textBox_SerialPortRecognizePattern2.Location = new System.Drawing.Point(120, 16);
+            this.textBox_SerialPortRecognizePattern2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_SerialPortRecognizePattern2.Name = "textBox_SerialPortRecognizePattern2";
+            this.textBox_SerialPortRecognizePattern2.Size = new System.Drawing.Size(108, 27);
+            this.textBox_SerialPortRecognizePattern2.TabIndex = 74;
+            // 
+            // textBox_SerialPortRecognizePattern
+            // 
+            this.textBox_SerialPortRecognizePattern.Location = new System.Drawing.Point(8, 16);
+            this.textBox_SerialPortRecognizePattern.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_SerialPortRecognizePattern.Name = "textBox_SerialPortRecognizePattern";
+            this.textBox_SerialPortRecognizePattern.Size = new System.Drawing.Size(108, 27);
+            this.textBox_SerialPortRecognizePattern.TabIndex = 73;
+            // 
+            // checkBox_SerialPortRecordLog
+            // 
+            this.checkBox_SerialPortRecordLog.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_SerialPortRecordLog.AutoSize = true;
+            this.checkBox_SerialPortRecordLog.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_SerialPortRecordLog.Location = new System.Drawing.Point(345, 14);
+            this.checkBox_SerialPortRecordLog.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox_SerialPortRecordLog.Name = "checkBox_SerialPortRecordLog";
+            this.checkBox_SerialPortRecordLog.Size = new System.Drawing.Size(83, 29);
+            this.checkBox_SerialPortRecordLog.TabIndex = 69;
+            this.checkBox_SerialPortRecordLog.Text = "Log to file";
+            this.checkBox_SerialPortRecordLog.UseVisualStyleBackColor = true;
+            this.checkBox_SerialPortRecordLog.CheckedChanged += new System.EventHandler(this.CheckBox_S1RecordLog_CheckedChanged);
+            // 
+            // checkBox_SerialPortPause
+            // 
+            this.checkBox_SerialPortPause.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_SerialPortPause.AutoSize = true;
+            this.checkBox_SerialPortPause.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_SerialPortPause.Location = new System.Drawing.Point(443, 13);
+            this.checkBox_SerialPortPause.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox_SerialPortPause.Name = "checkBox_SerialPortPause";
+            this.checkBox_SerialPortPause.Size = new System.Drawing.Size(58, 29);
+            this.checkBox_SerialPortPause.TabIndex = 70;
+            this.checkBox_SerialPortPause.Text = "Pause";
+            this.checkBox_SerialPortPause.UseVisualStyleBackColor = true;
+            this.checkBox_SerialPortPause.CheckedChanged += new System.EventHandler(this.CheckBox_S1Pause_CheckedChanged);
+            // 
+            // button_ClearSerialPort
+            // 
+            this.button_ClearSerialPort.Font = new System.Drawing.Font("Calibri", 12F);
+            this.button_ClearSerialPort.Location = new System.Drawing.Point(514, 13);
+            this.button_ClearSerialPort.Margin = new System.Windows.Forms.Padding(2);
+            this.button_ClearSerialPort.Name = "button_ClearSerialPort";
+            this.button_ClearSerialPort.Size = new System.Drawing.Size(62, 29);
+            this.button_ClearSerialPort.TabIndex = 69;
+            this.button_ClearSerialPort.Text = "Clear";
+            this.button_ClearSerialPort.UseVisualStyleBackColor = true;
+            this.button_ClearSerialPort.Click += new System.EventHandler(this.txtS1_Clear_Click);
+            // 
+            // SerialPortLogger_TextBox
+            // 
+            this.SerialPortLogger_TextBox.BackColor = System.Drawing.Color.LightGray;
+            this.SerialPortLogger_TextBox.EnableAutoDragDrop = true;
+            this.SerialPortLogger_TextBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SerialPortLogger_TextBox.Location = new System.Drawing.Point(4, 47);
+            this.SerialPortLogger_TextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SerialPortLogger_TextBox.Name = "SerialPortLogger_TextBox";
+            this.SerialPortLogger_TextBox.Size = new System.Drawing.Size(1397, 502);
+            this.SerialPortLogger_TextBox.TabIndex = 0;
+            this.SerialPortLogger_TextBox.Text = "";
+            this.SerialPortLogger_TextBox.TextChanged += new System.EventHandler(this.SerialPortLogger_TextBox_TextChanged);
             // 
             // button_OpenFolder
             // 
@@ -4349,24 +4362,13 @@ namespace Monitor
             this.checkBox_Openall.UseVisualStyleBackColor = true;
             this.checkBox_Openall.CheckedChanged += new System.EventHandler(this.checkBox_Openall_CheckedChanged);
             // 
-            // checkBox_RecordToFileTCPClient
-            // 
-            this.checkBox_RecordToFileTCPClient.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_RecordToFileTCPClient.AutoSize = true;
-            this.checkBox_RecordToFileTCPClient.Location = new System.Drawing.Point(1225, 111);
-            this.checkBox_RecordToFileTCPClient.Name = "checkBox_RecordToFileTCPClient";
-            this.checkBox_RecordToFileTCPClient.Size = new System.Drawing.Size(100, 28);
-            this.checkBox_RecordToFileTCPClient.TabIndex = 18;
-            this.checkBox_RecordToFileTCPClient.Text = "Record to file";
-            this.checkBox_RecordToFileTCPClient.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1543, 711);
+            this.ClientSize = new System.Drawing.Size(1543, 728);
             this.Controls.Add(this.checkBox_Openall);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_ClentTCPStatus);
@@ -4398,17 +4400,6 @@ namespace Monitor
             this.tabPage_charts.ResumeLayout(false);
             this.tabPage_charts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.tabPage_SerialPort.ResumeLayout(false);
-            this.groupBox_SendSerialOrMonitorCommands.ResumeLayout(false);
-            this.groupBox_SendSerialOrMonitorCommands.PerformLayout();
-            this.gbPortSettings.ResumeLayout(false);
-            this.gbPortSettings.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox_Timer.ResumeLayout(false);
-            this.groupBox_Timer.PerformLayout();
-            this.groupBox_Stopwatch.ResumeLayout(false);
-            this.groupBox_Stopwatch.PerformLayout();
             this.tabPage_ClientTCP.ResumeLayout(false);
             this.tabPage_ClientTCP.PerformLayout();
             this.groupBox33.ResumeLayout(false);
@@ -4427,6 +4418,17 @@ namespace Monitor
             this.tabPage2_Script.PerformLayout();
             this.groupBox32.ResumeLayout(false);
             this.groupBox32.PerformLayout();
+            this.tabPage_SerialPort.ResumeLayout(false);
+            this.groupBox_SendSerialOrMonitorCommands.ResumeLayout(false);
+            this.groupBox_SendSerialOrMonitorCommands.PerformLayout();
+            this.gbPortSettings.ResumeLayout(false);
+            this.gbPortSettings.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox_Timer.ResumeLayout(false);
+            this.groupBox_Timer.PerformLayout();
+            this.groupBox_Stopwatch.ResumeLayout(false);
+            this.groupBox_Stopwatch.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.S1_Configuration.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
@@ -6319,7 +6321,7 @@ namespace Monitor
                 }
                 return ascii;
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            catch {  }
             return string.Empty;
         }
 
@@ -7560,29 +7562,9 @@ namespace Monitor
             }
             else
             {
-                if (checkBox_ParseRxTCPBuffer.Checked == true)
+                
+                try
                 {
-
-                    try
-                    {
-                        TcpClient PClientSocket = ClientSocket;
-                        if (TCPClientBuffer.Length > 0)
-                        {
-
-                            ParseKratosIncomeFrame(TCPClientBuffer);
-
-                            PClientSocket = ClientSocket;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        SystemLogger.LogMessage(Color.Red, Color.LightGray, ex.ToString(), New_Line = false, Show_Time = true);
-                    }
-                }
-                else
-                {
-                    try
-                    {
                         TcpClient PClientSocket = ClientSocket;
                         if (TCPClientBuffer.Length > 0)
                         {
@@ -7593,8 +7575,8 @@ namespace Monitor
                                 TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, ConvertByteArraytToString(TCPClientBuffer), true, false);
 
                                 //richTextBox_ClientRxPrintText( ConvertByteArraytToString (TCPClientBuffer));
-                                TCPClientBuffer = new byte[0];
-                                PClientSocket = ClientSocket;
+                                //TCPClientBuffer = new byte[0];
+                                //PClientSocket = ClientSocket;
                             }
                             else
                             {
@@ -7604,20 +7586,43 @@ namespace Monitor
                                 TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
                                 TCPClietnLogger.LogMessage(Color.Blue, Color.Azure, str, true, false);
 
-                               // richTextBox_ClientRxPrintText(str);
-                                TCPClientBuffer = new byte[0];
-                                PClientSocket = ClientSocket;
+                                // richTextBox_ClientRxPrintText(str);
+                                //TCPClientBuffer = new byte[0];
+                               // PClientSocket = ClientSocket;
                             }
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        SystemLogger.LogMessage(Color.Red, Color.LightGray, ex.ToString(), New_Line = false, Show_Time = true);
-                    }
+                
+
+                        if (checkBox_ParseRxTCPBuffer.Checked == true)
+                        {
+
+                            try
+                            {
+                                //TcpClient PClientSocket = ClientSocket;
+                                if (TCPClientBuffer.Length > 0)
+                                {
+
+                                    ParseKratosIncomeFrame(TCPClientBuffer);
+
+                                    PClientSocket = ClientSocket;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                SystemLogger.LogMessage(Color.Red, Color.LightGray, ex.ToString(), New_Line = false, Show_Time = true);
+                            }
+                        }
 
 
+                    TCPClientBuffer = new byte[0];
 
                 }
+                catch (Exception ex)
+                {
+                    SystemLogger.LogMessage(Color.Red, Color.LightGray, ex.ToString(), New_Line = false, Show_Time = true);
+                }
+
+
 
 
 
@@ -9324,6 +9329,7 @@ namespace Monitor
 
         }
 
+
         void ParseOne_T_Project_Frame(KratosProtocolFrame i_incomeframe)
         {
             SystemLogger.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
@@ -9337,9 +9343,12 @@ namespace Monitor
             
             switch (i_incomeframe.Opcode)
             {
-                //Read conmmand
+                case "20":
+                    SystemLogger.LogMessage(Color.Black, Color.Lime, String.Format("Income message [{0}]", ConvertHex(i_incomeframe.Data)), true, false);
+                    break;
+
                 case "70":
-                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format( "Register 32 bit Value [{0}]",i_incomeframe.Data), true, false);
+                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format( "Register 32 bit Read Value [{0}]",i_incomeframe.Data), true, false);
                     break;
 
                 case "71":
@@ -9347,7 +9356,7 @@ namespace Monitor
                     break;
 
                 case "72":
-                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format("Register 64 bit Value [{0}]", i_incomeframe.Data), true, false);
+                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format("Register 64 bit Read Value [{0}]", i_incomeframe.Data), true, false);
                     break;
 
                 case "73":
@@ -13066,6 +13075,7 @@ This Process can take 1 minute.";
 
 
             i_Command = i_Command.Replace("0x", "");
+            i_Command = i_Command.Replace("_", "");
             String[] tempStr = i_Command.Split(' ');
 
             //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
@@ -13193,6 +13203,7 @@ This Process can take 1 minute.";
             int DelayBetweenReadWrite = 0;
 
             i_Command = i_Command.Replace("0x", "");
+            i_Command = i_Command.Replace("_", "");
             String[] tempStr = i_Command.Split(' ');
 
             //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
@@ -13658,6 +13669,7 @@ This Process can take 1 minute.";
             String ret = "";
 
             i_Command = i_Command.Replace("0x", "");
+            i_Command = i_Command.Replace("_", "");
             String[] tempStr = i_Command.Split(' ');
 
             //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
@@ -13718,11 +13730,25 @@ This Process can take 1 minute.";
             return ret;
         }
 
+        
+        String delete_history(String i_Command, bool i_OnlyCheckValidity)
+        {
+            String ret = "";
+
+            Monitor.Properties.Settings.Default.CLICommad_History.Clear();
+            Monitor.Properties.Settings.Default.Save();
+
+            SystemLogger.LogMessage(Color.Blue, Color.White, "History deleted", New_Line = true, Show_Time = true);
+
+            return ret;
+
+        }
         String ReadReg64(String i_Command, bool i_OnlyCheckValidity)
         {
             String ret = "";
 
             i_Command = i_Command.Replace("0x", "");
+            i_Command = i_Command.Replace("_", "");
             String[] tempStr = i_Command.Split(' ');
 
             //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
@@ -13878,6 +13904,8 @@ This Process can take 1 minute.";
                             ret = ReadReg32(i_Command, i_OnlyCheckValidity);
                             break;
 
+
+                            
                         case "WriteReg32":
                             ret = await WriteReg32(i_Command, i_OnlyCheckValidity);
                             break;
@@ -13899,6 +13927,10 @@ This Process can take 1 minute.";
                         case "history":
                             //  button_ClearMiniAda.PerformClick();
                             ShowCLIHistory();
+                            break;
+
+                        case "delete_history":
+                            ret = delete_history(i_Command, i_OnlyCheckValidity);
                             break;
 
                         default:
@@ -14417,6 +14449,43 @@ This Process can take 1 minute.";
             }
         }
 
+        private void richTextBox_ClientTx_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                switch (e.KeyCode)
+                {
+                    //case Keys.F1:
+                    //    SerialTerminalPrintHelp();
+
+                    //    break;
+
+                    //case Keys.F2:
+                    //    SerialPortLogger.LogMessage(Color.Black, Color.Chartreuse, "F2 function reads all commands to history", New_Line = true, Show_Time = true);
+                    //    break;
+
+
+
+
+                    case Keys.Enter:
+
+                        button_TCPClientTxSend.PerformClick();
+
+
+                        break;
+
+
+                }
+
+                //  CommandsHistoy.SelectedIndex = HistoryIndex;
+            }
+            catch
+            {
+
+            }
+        }
+    
+
         private void Button_ResetTimer_Click(object sender, EventArgs e)
         {
             ResetTimer();
@@ -14509,7 +14578,7 @@ WriteReg64 0123456789ABCDEF 1122334455667788
 
 
 ",
-"WriteReg64 0000000000000004 1122334455667788");
+"WriteReg64 0000_0000_0000_0004 1122_3344_5566_7788");
 
             //WriteReg32.Example = "WriteReg AAAAAAAA BBBBBBBB FFFF0000 1000";
 
@@ -14536,7 +14605,7 @@ Example:
 
 ReadReg64 0123456789ABCDEF ---> Read from Register 0123456789ABCDEF
 ",
-"ReadReg64 0000000000000004");
+"ReadReg64 0000_0000_0000_0004");
 
             List_AllCommands.Add(ReadReg64);
 
@@ -14565,14 +14634,14 @@ Delay between Read and write (only when using mask) [integer decimal]
 
 Examples:
 
-WriteReg32 00000000 1234ABCD
+WriteReg32 0000_0000 1234_ABCD
     Write to Register 00000000 1234ABCD
 
-WriteReg32 00000000 12345678 FFFF0000 1000
+WriteReg32 0000_0000 123_45678 FFFF_0000 1000
     Read Register 0x00000000 modify 0xXXXX5678 and write back to 0x00000000 with delay of 1000 ms between read and write
 
 ",
-"WriteReg32 00000000 1234ABCD");
+"WriteReg32 0000_0000 1234_ABCD");
 
             //WriteReg32.Example = "WriteReg AAAAAAAA BBBBBBBB FFFF0000 1000";
 
@@ -14597,9 +14666,9 @@ ReadReg address [4 hex bytes]
 
 Example:
 
-ReadReg32 AAAAAAAA ---> Read from Register 0xAAAAAAAA
+ReadReg32 AAAA_AAAA ---> Read from Register 0xAAAAAAAA
 ",
-"ReadReg32 A01A000C");
+"ReadReg32 A01A_000C");
 
             List_AllCommands.Add(ReadReg32);
 
@@ -14694,10 +14763,6 @@ show all the commands history
 Number of arguments:
 0
 
-Syntax 2 arguments:
-history
-
-
 Examples:
 
 history
@@ -14707,6 +14772,24 @@ history
 
 
             List_AllCommands.Add(History);
+
+            CommandClass delete_history = new CommandClass("delete_history",
+@"
+Description: 
+delete all the history of the commnds
+
+Number of arguments:
+0
+
+Examples:
+
+delete_history
+
+",
+"delete_history");
+
+
+            List_AllCommands.Add(delete_history);
 
 
 
