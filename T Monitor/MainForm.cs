@@ -9262,13 +9262,13 @@ namespace Monitor
             }
         }
 
-        public void DecodeKratusProtocol(ref byte[] i_IncomingBytes)
+        public void DecodeKratusProtocol(ref byte[] io_IncomingBytes)
         {
             KratosProtocolFrame Ret = new KratosProtocolFrame();
 
             try
             {
-                byte[] DataLengthBytes = i_IncomingBytes.Skip(2).Take(4).Reverse().ToArray();
+                byte[] DataLengthBytes = io_IncomingBytes.Skip(2).Take(4).Reverse().ToArray();
                 
 
                 UInt32 FrameDataLength = BitConverter.ToUInt32(DataLengthBytes, 0);
@@ -9279,42 +9279,42 @@ namespace Monitor
 
                 for (int i = 0; i < CheckSumIndex; i++)
                 {
-                    CheckSumCalc += i_IncomingBytes[i];
+                    CheckSumCalc += io_IncomingBytes[i];
                 }
 
-                byte[] CheckSumBytes = i_IncomingBytes.Skip(CheckSumIndex).Take(2).Reverse().ToArray();
+                byte[] CheckSumBytes = io_IncomingBytes.Skip(CheckSumIndex).Take(2).Reverse().ToArray();
                 UInt16 CheckSumSent = BitConverter.ToUInt16(CheckSumBytes, 0);
 
                 if (CheckSumSent == CheckSumCalc)
                 {
 
-                    Ret.Preamble = ByteArrayToString(i_IncomingBytes.Skip(0).Take(1).ToArray());
+                    Ret.Preamble = ByteArrayToString(io_IncomingBytes.Skip(0).Take(1).ToArray());
 
-                    Ret.Opcode = ByteArrayToString(i_IncomingBytes.Skip(1).Take(1).ToArray());
+                    Ret.Opcode = ByteArrayToString(io_IncomingBytes.Skip(1).Take(1).ToArray());
 
-                    Ret.Data = ByteArrayToString(i_IncomingBytes.Skip(6).Take((int)FrameDataLength).ToArray());
+                    Ret.Data = ByteArrayToString(io_IncomingBytes.Skip(6).Take((int)FrameDataLength).ToArray());
 
                     Ret.DataLength = FrameDataLength.ToString();
 
                     Ret.CheckSum = CheckSumSent.ToString("X4");
 
                     ParseOne_T_Project_Frame(Ret);
-                    
+
                     //SystemLogger.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
                     //SystemLogger.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
                     //SystemLogger.LogMessage(Color.Blue, Color.LightGray, Ret.Data, true, false);
 
 
-                    i_IncomingBytes = i_IncomingBytes.Skip((int)FrameDataLength + 8).ToArray();
+                    io_IncomingBytes = io_IncomingBytes.Skip((int)FrameDataLength + 8).ToArray();
 
                 }
                 else
                 {
                     //throw new Exception("Check sum failed!");
                     SystemLogger.LogMessage(Color.OrangeRed, Color.LightGray, "Check sum failed!", New_Line = true, Show_Time = true);
-                   // WriteToSystemStatus("Tx Client check sum failed!!", 5, Color.Orange);
+                    // WriteToSystemStatus("Tx Client check sum failed!!", 5, Color.Orange);
 
-                    i_IncomingBytes = new byte[0]; 
+                    io_IncomingBytes = new byte[0]; 
                 }
 
 
