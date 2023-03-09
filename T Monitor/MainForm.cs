@@ -424,8 +424,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -1300,17 +1300,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea1.AxisX.Title = "Freq";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.Title = "Power [dBm]";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            legend1.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend1);
+            chartArea4.AxisX.Title = "Freq";
+            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.Title = "Power [dBm]";
+            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend4.IsTextAutoFit = false;
+            legend4.Name = "Legend1";
+            legend4.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -1657,7 +1657,7 @@ namespace Monitor
             this.textBox_CLISendCommands.AutoWordSelection = true;
             this.textBox_CLISendCommands.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.textBox_CLISendCommands.DetectUrls = false;
-            this.textBox_CLISendCommands.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_CLISendCommands.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_CLISendCommands.Location = new System.Drawing.Point(8, 16);
             this.textBox_CLISendCommands.Multiline = false;
             this.textBox_CLISendCommands.Name = "textBox_CLISendCommands";
@@ -4368,7 +4368,7 @@ namespace Monitor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1543, 728);
+            this.ClientSize = new System.Drawing.Size(1543, 711);
             this.Controls.Add(this.checkBox_Openall);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_ClentTCPStatus);
@@ -13884,7 +13884,14 @@ This Process can take 1 minute.";
         async private Task<String> ExecuteCLICommand(String i_Command, bool i_OnlyCheckValidity)
         {
 
+            if(i_Command[i_Command.Length -1] == ' ')
+            {
+                i_Command = i_Command.Remove(i_Command.Length - 1);
+            }
+
             String[] tempStr = i_Command.Split(' ');
+
+
             String CommandName = tempStr[0];
             String ret = "";
             bool IsCommandFound = false;
@@ -14634,14 +14641,14 @@ Delay between Read and write (only when using mask) [integer decimal]
 
 Examples:
 
-WriteReg32 0000_0000 1234_ABCD
-    Write to Register 00000000 1234ABCD
+WriteReg32 A01A_000C 1234_ABCD
+    Write to Register A01A_000C 1234ABCD
 
-WriteReg32 0000_0000 123_45678 FFFF_0000 1000
-    Read Register 0x00000000 modify 0xXXXX5678 and write back to 0x00000000 with delay of 1000 ms between read and write
+WriteReg32 A01A_000C 123_45678 FFFF_0000 1000
+    Read Register A01A_000C modify 0xXXXX5678 and write back to A01A_000C with delay of 1000 ms between read and write
 
 ",
-"WriteReg32 0000_0000 1234_ABCD");
+"WriteReg32 A01A_000C 0000_0001");
 
             //WriteReg32.Example = "WriteReg AAAAAAAA BBBBBBBB FFFF0000 1000";
 
