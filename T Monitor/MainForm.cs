@@ -13911,8 +13911,12 @@ This Process can take 1 minute.";
                             ret = ReadReg32(i_Command, i_OnlyCheckValidity);
                             break;
 
+                        case "help":
+                            textBox_CommandHelp.Text = CLI_Help;
+                            break;
 
                             
+
                         case "WriteReg32":
                             ret = await WriteReg32(i_Command, i_OnlyCheckValidity);
                             break;
@@ -14126,7 +14130,7 @@ This Process can take 1 minute.";
                 button_CheckScriptValidity.PerformClick();
                 //await Task.Delay(1000);
 
-                WriteToSystemStatus(String.Format("Total Commands: [{0}]", richTextBox_Scripts.Lines.Length), 10, Color.LightBlue);
+                //WriteToSystemStatus(String.Format("Total Commands: [{0}]", richTextBox_Scripts.Lines.Length), 10, Color.LightBlue);
 
                 while (checkBox_RepeatCLIScript.Checked == true || IsFirstTime == false)
                 {
@@ -14134,7 +14138,7 @@ This Process can take 1 minute.";
                     i = 1;
                     foreach (String line in richTextBox_Scripts.Lines)
                     {
-                        if (line != null && line != String.Empty)
+                        if (line != null && line != String.Empty && (line.StartsWith("//") == false))
                         {
                             //textBox_CLISendCommands.Text = line;
                             //button_CLISend_Click(null, null);
@@ -14224,16 +14228,23 @@ This Process can take 1 minute.";
             {
                 if (line != "")
                 {
-                    String ret = await ExecuteCLICommand(line, true);
-
-                    if (ret != "")
+                    if (line.StartsWith("//"))
                     {
-                        MyAppendText(richTextBox_Scripts, line + "\r\n", Color.Black, Color.OrangeRed);
-
+                        MyAppendText(richTextBox_Scripts, line + "\r\n", Color.Black, Color.LightGray);
                     }
                     else
                     {
-                        MyAppendText(richTextBox_Scripts, line + "\r\n", Color.Black, Color.LightGreen);
+                        String ret = await ExecuteCLICommand(line, true);
+
+                        if (ret != "")
+                        {
+                            MyAppendText(richTextBox_Scripts, line + "\r\n", Color.Black, Color.OrangeRed);
+
+                        }
+                        else
+                        {
+                            MyAppendText(richTextBox_Scripts, line + "\r\n", Color.Black, Color.LightGreen);
+                        }
                     }
                     Monitor.Properties.Settings.Default.Script.Add(line);
                 }
@@ -14568,7 +14579,7 @@ Number of arguments:
 
 Syntax 2 arguments:
 WriteReg64
-address [8 hex bytes] 
+address [8 hex bytes]
 data [8 hex bytes]
 
 Syntax 4 arguments:
@@ -14718,17 +14729,20 @@ GetRecordingBufferSize
 
             List_AllCommands.Add(GetRecordingBufferSize);
 
-            CommandClass InitPlayIQData = new CommandClass("InitPlayIQData",
+            CommandClass InitPlayIQData = new CommandClass("RecordMuxControl",
 @"
 Description: 
-Configure the recording system without starting
+configure register 0xa01a0094  for configure the source of the ADC for both channels or record pattern gen
 
 Num of arguments:
-1
+3
 
 Syntax:
 
-InitPlayIQData [1-200Mbytes – sequence of loaded data]
+RecordMuxControl 
+[Channel 0]{integer 0-16} 
+[Channel 1]{integer 0-16} 
+[Record source select]{integer 0-1: 0 - Record RX data  1 - Pattern Gen} 
 
 Example:
 
@@ -14738,6 +14752,26 @@ InitPlayIQData 2000000
 
             List_AllCommands.Add(InitPlayIQData);
 
+
+
+            CommandClass help = new CommandClass("help",
+@"
+Description: 
+Show help
+
+Num of arguments:
+0
+
+Syntax:
+
+help 
+Example:
+
+help
+",
+"help");
+
+            List_AllCommands.Add(help);
 
 
             CommandClass Clear = new CommandClass("clear",
@@ -14816,8 +14850,12 @@ General Format:
 Command arg1 arg2 arg3...
 Between Command and arguments there is single ASCII space.
 
+about each command you can see help about it's syntax.
+
 For example:
 Command 12 abc
+
+description:
 -----------------------------
 Use the arrows Up, Down and Tab for autocomplition.
 
