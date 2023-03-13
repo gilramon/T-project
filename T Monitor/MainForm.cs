@@ -9363,6 +9363,12 @@ namespace Monitor
                     SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format("Write register 64 ACK recieved"), true, false);
                     break;
 
+                case "80":
+                    SystemLogger.LogMessage(Color.Black, Color.LightBlue, String.Format("Read Channel 0"), true, true);
+                    SystemLogger.LogMessage(Color.Black, Color.White, System.Text.RegularExpressions.Regex.Replace(i_incomeframe.Data, ".{8}", "$0 "), true, false);
+                    SystemLogger.LogMessage(Color.DarkBlue, Color.White, String.Format("Number of samples [{0}]", (i_incomeframe.Data.Length / 8)), true, true);
+                    break;
+
 
                 ////Write conmmand
                 //case 0x21:
@@ -13743,6 +13749,73 @@ This Process can take 1 minute.";
             return ret;
 
         }
+        
+
+        String GetChannel0(String i_Command, bool i_OnlyCheckValidity)
+        {
+            String ret = "";
+
+            i_Command = i_Command.Replace("0x", "");
+            i_Command = i_Command.Replace("_", "");
+            String[] tempStr = i_Command.Split(' ');
+
+            //Check Validity of the command first and retuen string error if something wrong. //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+            ///
+
+            if (tempStr.Length != 2)
+            {
+                ret += String.Format("\n Arguments number should be 1, see example");
+                return ret;
+            }
+
+            byte[] buffer = StringToByteArray(tempStr[1]);
+
+            if (buffer == null || buffer.Length != 4)
+            {
+                ret += String.Format("\n Argument [{0}] invalid not hex value or not 4 bytes", tempStr[1]);
+                return ret;
+            }
+
+            if (i_OnlyCheckValidity == true || ret != "")
+            {
+                return ret;
+            }
+
+            //Init all the commands //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            String Command = tempStr[0];
+            String SizeOfDataToReceive = tempStr[1];
+
+
+            // Excute the command //////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+
+
+            List<byte> ListBytes = EncodeKratusProtocol(PREAMBLE, "80", SizeOfDataToReceive);
+
+            if (ret == "" && i_OnlyCheckValidity == false)
+            {
+                //Execute the command
+                PrintToSystemLogerTxMessage(i_Command);
+                richTextBox_ClientTx.Text = ConvertByteArraytToString(ListBytes.ToArray());
+
+                //Button3_Click_4(null, null);
+                //button_TCPClientTxSend.PerformClick();
+                button_TCPClientTxSend_Click(null, null);
+            }
+
+
+
+
+
+
+            return ret;
+        }
+
         String ReadReg64(String i_Command, bool i_OnlyCheckValidity)
         {
             String ret = "";
@@ -13927,6 +14000,11 @@ This Process can take 1 minute.";
 
                         case "WriteReg64":
                             ret = await WriteReg64(i_Command, i_OnlyCheckValidity);
+                            break;
+
+
+                        case "GetChannel0":
+                            ret = GetChannel0(i_Command, i_OnlyCheckValidity);
                             break;
 
 
@@ -14690,67 +14768,89 @@ ReadReg32 AAAA_AAAA ---> Read from Register 0xAAAAAAAA
 
             List_AllCommands.Add(ReadReg32);
 
+            
 
-            CommandClass RecordIQData = new CommandClass("RecordIQData",
+
+                            CommandClass GetChannel0 = new CommandClass("GetChannel0",
 @"
 Description: 
-Start recording ‘I’ & ’Q’ data
+Get Channel 0 data up to 512K
 
 Num of arguments:
-2
+1
 
 Syntax:
-RecordIQData [Channel to record] [Num of samples per channel. Note: each sample is 32bit.]
+GetChannel0 [Size of Data]{32 bit}
 
 Example:
 
-RecordIQData 1 1024 ----> record from channel 2 1024 samples
+GetChannel0 00001000
 ",
-"RecordIQData 1 1024");
+"GetChannel0 00001000");
 
-            List_AllCommands.Add(RecordIQData);
+            List_AllCommands.Add(GetChannel0);
 
-            CommandClass GetRecordingBufferSize = new CommandClass("GetRecordingBufferSize",
-@"
-Description: 
-Get amounted size for recording buffer 
 
-Num of arguments:
-0
+//            CommandClass RecordIQData = new CommandClass("RecordIQData",
+//@"
+//Description: 
+//Start recording ‘I’ & ’Q’ data
 
-Syntax:
-GetRecordingBufferSize
+//Num of arguments:
+//2
 
-Example:
+//Syntax:
+//RecordIQData [Channel to record] [Num of samples per channel. Note: each sample is 32bit.]
 
-GetRecordingBufferSize
-",
-"GetRecordingBufferSize");
+//Example:
 
-            List_AllCommands.Add(GetRecordingBufferSize);
+//RecordIQData 1 1024 ----> record from channel 2 1024 samples
+//",
+//"RecordIQData 1 1024");
 
-            CommandClass InitPlayIQData = new CommandClass("RecordMuxControl",
-@"
-Description: 
-configure register 0xa01a0094  for configure the source of the ADC for both channels or record pattern gen
+//            List_AllCommands.Add(RecordIQData);
 
-Num of arguments:
-3
+//            CommandClass GetRecordingBufferSize = new CommandClass("GetRecordingBufferSize",
+//@"
+//Description: 
+//Get amounted size for recording buffer 
 
-Syntax:
+//Num of arguments:
+//0
 
-RecordMuxControl 
-[Channel 0]{integer 0-16} 
-[Channel 1]{integer 0-16} 
-[Record source select]{integer 0-1: 0 - Record RX data  1 - Pattern Gen} 
+//Syntax:
+//GetRecordingBufferSize
 
-Example:
+//Example:
 
-InitPlayIQData 2000000
-",
-"InitPlayIQData 2000000");
+//GetRecordingBufferSize
+//",
+//"GetRecordingBufferSize");
 
-            List_AllCommands.Add(InitPlayIQData);
+//            List_AllCommands.Add(GetRecordingBufferSize);
+
+//            CommandClass InitPlayIQData = new CommandClass("RecordMuxControl",
+//@"
+//Description: 
+//configure register 0xa01a0094  for configure the source of the ADC for both channels or record pattern gen
+
+//Num of arguments:
+//3
+
+//Syntax:
+
+//RecordMuxControl 
+//[Channel 0]{integer 0-16} 
+//[Channel 1]{integer 0-16} 
+//[Record source select]{integer 0-1: 0 - Record RX data  1 - Pattern Gen} 
+
+//Example:
+
+//InitPlayIQData 2000000
+//",
+//"InitPlayIQData 2000000");
+
+//            List_AllCommands.Add(InitPlayIQData);
 
 
 
