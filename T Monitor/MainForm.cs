@@ -14203,6 +14203,7 @@ This Process can take 1 minute.";
         {
             bool IsFirstTime = false;
             int i = 0;
+            
             if (int.TryParse(textBox_TimeBetweenComands.Text, out int Delay) == true)
             {
                 button_CheckScriptValidity.PerformClick();
@@ -14232,6 +14233,12 @@ This Process can take 1 minute.";
                                 StopRuunScript = false;
                                 return;
                             }
+
+                            if (ClientSocket == null)
+                            {
+                                return;
+                            }
+
                         }
                     }
                 }
